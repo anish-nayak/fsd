@@ -286,7 +286,7 @@ public class AdminServiceImpl implements AdminService {
 
 
 	@Override
-	public Object  updateRequest(ApplicationEntity applicationEntity,String sessionId,String userid) {
+	public Object  updateRequest(Application application,String sessionId,String userid) {
 		
 		UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.
 				findBySessionId(sessionId);
@@ -295,11 +295,12 @@ public class AdminServiceImpl implements AdminService {
 		if(userCredentialsEntity != null) {
 			ApplicationEntity app=applicationRepository.findByUserId(userid);
 			if(app!=null) {
+				app.setVoterId(application.getVoterId());
 		    app.setApprovedStatus(app.getApprovedStatus());
 		    app.setPassedStatus(app.getPassedStatus());
 		    app.setConstituency(app.getConstituency());
 		    applicationRepository.save(app);
-		    return app;
+		    return "{\"result\": \"Success\",\"message\": \"Updated Successfully.\"}";
 			}
 			else
 				return "{\"result\": \"failure\",\"message\": \"Wrong User Id\"}";
