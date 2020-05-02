@@ -10,6 +10,7 @@ import com.spring.entity.ElectionEntity;
 import com.spring.entity.PartyEntity;
 import com.spring.entity.ResultEntity;
 import com.spring.json.LoginResponse;
+import com.spring.json.Result;
 import com.spring.json.UserCredentials;
 
 public interface AdminService {
@@ -42,10 +43,12 @@ public interface AdminService {
 	
 	List<String> candidatesByParty(String partyName,String sessionid);
 
-	Object update(String candidateid, ResultEntity result, String sessionId);
+	Object update(String candidateid, Result result, String sessionId);
 
 	Object deletebyElectionId(String electionId, String sessionId);
 
-	Object deletebyCandidateId(String candidateid, String sessionId); 	
+	Object deletebyCandidateId(String candidateid, String sessionId); 
+	
+	Object updatepassword(UserCredentials usercred, String sessionId); 
 
 }

@@ -125,7 +125,7 @@ public class AdminController {
 	@PutMapping(value="/election/results/approval/{candidateId}",produces=MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE)
 	public Object resultStatus(@PathVariable(value="candidateId") String candidateid,@RequestBody Result result,ResultEntity resultEntity,@RequestHeader(name="sessionId") String sessionId) {
         BeanUtils.copyProperties(result, resultEntity); 
-		return adminService.update(candidateid,resultEntity,sessionId);
+		return adminService.update(candidateid,result,sessionId);
 		
 	}
 	@DeleteMapping(value="election/delete/{electionid}")
@@ -137,6 +137,13 @@ public class AdminController {
 	@DeleteMapping(value="voter/delete/{candidateId}")
 	public Object deleteCandidateById(@PathVariable(value="candidateId") String candidateid,@RequestHeader(name="sessionId") String sessionid) {
 		return adminService.deletebyCandidateId(candidateid,sessionId);
+		
+	}
+	
+	@PutMapping(value="/user/changePassword",produces=MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE)
+	public Object resultStatus(@RequestBody UserCredentials usercred,UserCredentialsEntity usercredEntity,@RequestHeader(name="sessionId") String sessionId) {
+        BeanUtils.copyProperties(usercred, usercredEntity); 
+		return adminService.updatepassword(usercred,sessionId);
 		
 	}
 

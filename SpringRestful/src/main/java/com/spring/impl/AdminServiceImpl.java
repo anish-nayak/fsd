@@ -339,19 +339,19 @@ public class AdminServiceImpl implements AdminService {
 
 
 	@Override
-	public Object update(String candidateid, ResultEntity resultent, String sessionId) {
+	public Object update(String candidateid, Result result, String sessionId) {
 		UserCredentialsEntity userCred=userCredentialsRepository.findBySessionId(sessionId);
-		Result result=new Result();
+		;
 		if(userCred!=null)
 		{
-			resultent=resultRepository.findByCandidateId(candidateid);
+			ResultEntity resultent=resultRepository.findByCandidateId(candidateid);
 			if(resultent!=null) {
 				resultent.setElectionId(result.getElectionId());
 				resultent.setCandidateId(result.getCandidateId());
 				resultent.setVoteCount(result.getVoteCount());
 				resultent.setResultStatus(result.getResultStatus());
-				resultent=resultRepository.save(resultent);
-				return resultent;
+				resultRepository.save(resultent);
+				return "{\"result\": \"success\",\"message\": \"Status updated successfully\"}";
 			}
 			else
 				return "{\"result\": \"failure\",\"message\": \"Wrong candidate Id\"}";
@@ -403,6 +403,20 @@ public class AdminServiceImpl implements AdminService {
 		  LoginResponse(); loginResponse.setMessage("INVALID SESSION ID");
 		  loginResponse.setResult("unsucessfull"); loginResponse.setSessionId(null);
 		  return loginResponse; } }
+	
+	@Override
+	public Object updatepassword(UserCredentials usercred, String sessionId) {
+		
+		UserCredentialsEntity userCredeEntity = userCredentialsRepository.findBySessionId(sessionId);
+		if(userCredeEntity != null) {
+			userCredeEntity.setUserid(usercred.getUserid());
+			userCredeEntity.setPassword(usercred.getPassword());
+			userCredentialsRepository.save(userCredeEntity);	
+			return "{Password successfully changed}";
+		}
+		
+		return "{Invalid credentials, try again}";
+	}
 	
 
 }
