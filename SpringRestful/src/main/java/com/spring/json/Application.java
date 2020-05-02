@@ -6,6 +6,10 @@ public class Application {
 	private int passedStatus; 
 	private int approvedStatus;
 	private String voterId;
+	
+	public Application() {
+		super();
+	}
 	public Application(String userId, String constituency, int passedStatus, int approvedStatus, String voterId) {
 		super();
 		this.userId = userId;
