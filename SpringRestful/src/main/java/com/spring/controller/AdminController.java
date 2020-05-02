@@ -95,13 +95,13 @@ public class AdminController {
 	}
 	
 	@PostMapping(value="/application/{userid}/update",produces=MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE)
-	public Object updateRequest(@RequestBody ApplicationEntity 
-			applicationEntity,Application
-			application,@RequestHeader(name = "sessionId") String sessionId,
+	public Object updateRequest(@RequestBody Application
+			application,ApplicationEntity 
+			applicationEntity ,@RequestHeader(name = "sessionId") String sessionId,
 			@PathVariable(name="userid") String userid
 			){
        BeanUtils.copyProperties(application,applicationEntity);
-		return adminService.updateRequest(applicationEntity,userid,sessionId);
+		return adminService.updateRequest(application,userid,sessionId);
 	}
 
 	@PostMapping("/login")
