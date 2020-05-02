@@ -129,13 +129,13 @@ public class AdminController {
 		
 	}
 	@DeleteMapping(value="election/delete/{electionid}")
-	public Boolean deleteElectionById(@PathVariable(value="electionid") String electionId,@RequestHeader(name="sessionId") String sessionid) {
+	public Object deleteElectionById(@PathVariable(value="electionid") String electionId,@RequestHeader(name="sessionId") String sessionid) {
 		return adminService.deletebyElectionId(electionId,sessionId);
 		
 	}
 	
 	@DeleteMapping(value="voter/delete/{candidateId}")
-	public Boolean deleteCandidateById(@PathVariable(value="candidateId") String candidateid,@RequestHeader(name="sessionId") String sessionid) {
+	public Object deleteCandidateById(@PathVariable(value="candidateId") String candidateid,@RequestHeader(name="sessionId") String sessionid) {
 		return adminService.deletebyCandidateId(candidateid,sessionId);
 		
 	}

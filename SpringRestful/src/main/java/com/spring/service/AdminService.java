@@ -44,8 +44,8 @@ public interface AdminService {
 
 	Object update(String candidateid, ResultEntity result, String sessionId);
 
-	Boolean deletebyElectionId(String electionId, String sessionId);
+	Object deletebyElectionId(String electionId, String sessionId);
 
-	Boolean deletebyCandidateId(String candidateid, String sessionId); 	
+	Object deletebyCandidateId(String candidateid, String sessionId); 	
 
 }

@@ -363,32 +363,32 @@ public class AdminServiceImpl implements AdminService {
 
 
 	@Override
-	public Boolean deletebyElectionId(String electionId, String sessionId) {
+	public Object deletebyElectionId(String electionId, String sessionId) {
 			
 		UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findBySessionId(sessionId);
 		if(userCredentialsEntity != null) {
 			List<ElectionEntity> elect=electionRepository.findByElectionid(electionId);
 			ElectionEntity el=elect.get(0);
 				electionRepository.delete(el);		
-	       	return true;
+				return "{Succesfully deleted}";
 		}
 			else {
-				return false;
+				return "{Invalid session id}";
 		}	
 	}
 
 
 	@Override
-	public Boolean deletebyCandidateId(String candidateid, String sessionId) {
+	public Object deletebyCandidateId(String candidateid, String sessionId) {
 		UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findBySessionId(sessionId);
 		if(userCredentialsEntity != null) {
 			List<CandidateEntity> candy=candidateRepository.findByCandidateId(candidateid);
 			CandidateEntity can=candy.get(0);
 				candidateRepository.delete(can);		
-	       	return true;
+	       	return "{Succesfully deleted}";
 		}
 			else {
-				return false;
+				return "{invalid session id}";
 		}	
 	}
 
