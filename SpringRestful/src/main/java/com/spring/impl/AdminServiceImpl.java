@@ -240,7 +240,6 @@ public class AdminServiceImpl implements AdminService {
 		
 			UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findBySessionId(sessionId);
 	
-			ElectionEntity electionEntity=adminRepository.findByElectionid(electionid);
 			if(userCredentialsEntity != null) {
 				String id = generateRandomString(6);
 				candidate.setCandidateId(id);
@@ -261,7 +260,7 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public Object getCandidateDetails(String sessionId) {
 		UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findBySessionId(sessionId);
-	//ElectionEntity electionEntity=adminRepository.findByElectionid(electionid);
+	
 		if(userCredentialsEntity != null) {
 			List<CandidateEntity> candidateList = new ArrayList<>();
 			candidateRepository.findAll().forEach(candidateList::add);
