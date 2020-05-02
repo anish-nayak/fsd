@@ -1,6 +1,7 @@
 package com.spring.service;
 
 
+import java.time.LocalDate;
 import java.util.List;
 
 import com.spring.entity.ApplicationEntity;
@@ -21,11 +22,17 @@ public interface AdminService {
 
 	LoginResponse adminLogout(String sessionId);
 	
-	List<PartyEntity> getPartyDetails(String sessionId);
+
+	Object addParty(PartyEntity party, String sessionId);
+	
+	Object getPartyDetails(String sessionId);
+	
+	Object getAllElectionFromElectionDate(LocalDate date,String sessionId);
+	
 
 	Object getCandidateDetails(String sessionId);
 
-	Object addParty(PartyEntity party, String sessionId);
+	
 
 	Object addCandidate(CandidateEntity candidate, String sessionId, String electionid);
 

@@ -1,9 +1,12 @@
 package com.spring.controller;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -53,12 +56,6 @@ public class AdminController {
 		return adminService.addCandidate(candidateEntity,sessionId,electionid);
 	}
 	
-	@PostMapping(value="/party", produces=MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE)
-	public PartyEntity  addPartyDetails(@RequestBody Party party,PartyEntity partyEntity)
-	{ BeanUtils.copyProperties(party, partyEntity);
-		 adminService.addParty(partyEntity, sessionId);
-		return partyEntity;
-	}
 	
 	
 	@GetMapping("/election")
@@ -74,10 +71,23 @@ public class AdminController {
 		return adminService.getCandidateDetails(sessionId);
 	}
 	
-	@GetMapping(value="/party")
-		public List<PartyEntity> getPartyDetails(){
+	@PostMapping(value="/party")
+	public Object  addPartyDetails(@RequestBody Party party,PartyEntity partyEntity,@RequestHeader(name="sessionId") String sessionId){
+	 BeanUtils.copyProperties(party, partyEntity);
+		return adminService.addParty(partyEntity,sessionId);
+		
+	}
+@GetMapping(value="/party")
+		public Object getPartyDetails(@RequestHeader(name="sessionId") String sessionId){
 			return adminService.getPartyDetails(sessionId);
 		}
+	
+		
+		  @GetMapping("/election/fromDate/{date}")
+		  public Object getElectionFromElectionDate(@PathVariable(value="date") @DateTimeFormat(iso = ISO.DATE) LocalDate date,@RequestHeader(name="sessionId") String sessionId) {
+		  return adminService.getAllElectionFromElectionDate( date, sessionId); }
+		 
+	
 		
 	@GetMapping(value="/application/request")
 	public List<ApplicationEntity> getRequest(){

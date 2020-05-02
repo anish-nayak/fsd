@@ -1,6 +1,7 @@
 package com.spring.impl;
 
 import java.security.SecureRandom;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -117,6 +118,44 @@ public class AdminServiceImpl implements AdminService {
 	}
 	
 	
+	@Override
+	public Object getPartyDetails(String sessionId) {
+		UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findBySessionId(sessionId);
+		if(userCredentialsEntity != null) {
+		List<PartyEntity> partyList = new ArrayList<>();
+		partyRepository.findAll().forEach(partyList::add);
+		return partyList;
+		}
+		else {
+			LoginResponse loginResponse=new LoginResponse();
+			 loginResponse.setMessage("INVALID SESSION ID");
+			 loginResponse.setResult("unsucessfull");
+			 loginResponse.setSessionId(null);
+			 return loginResponse;
+		}
+	}
+	
+	
+	
+	  
+	  
+	  @Override
+	public Object addParty(PartyEntity party, String sessionId) {
+		UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findBySessionId(sessionId);
+		if(userCredentialsEntity != null) {
+		String id = generateRandomString(6);
+		party.setPartyid(id);
+		partyRepository.save(party);
+		return party;
+		}
+		else {
+		 LoginResponse loginResponse=new LoginResponse();
+		 loginResponse.setMessage("INVALID SESSION ID");
+		 loginResponse.setResult("unsucessfull");
+		 loginResponse.setSessionId(null);
+		 return loginResponse;
+		}			
+		}
 
 
 	@Override
@@ -182,23 +221,7 @@ public class AdminServiceImpl implements AdminService {
 		return response;
 	}
 
-	@Override
-	public Object addParty(PartyEntity party, String sessionId) {
-		UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findBySessionId(sessionId);
-		if(userCredentialsEntity != null) {
-		String id = generateRandomString(6);
-		party.setPartyid(id);
-		partyRepository.save(party);
-		return party;
-		}
-		else {
-		 LoginResponse loginResponse=new LoginResponse();
-		 loginResponse.setMessage("INVALID SESSION ID");
-		 loginResponse.setResult("unsucessfull");
-		 loginResponse.setSessionId(null);
-		 return loginResponse;
-		}			
-		}
+	
 
 
 	
@@ -250,14 +273,7 @@ public class AdminServiceImpl implements AdminService {
 	
 	
 
-	@Override
-	public List<PartyEntity> getPartyDetails(String sessionId) {
 	
-			List<PartyEntity> partyList = new ArrayList<>();
-			partyRepository.findAll().forEach(partyList::add);
-			return partyList;
-		
-	}
 
 
 
@@ -368,6 +384,18 @@ public class AdminServiceImpl implements AdminService {
 				return false;
 		}	
 	}
+
+
+	@Override
+	public Object getAllElectionFromElectionDate(LocalDate date, String sessionId) {
+		 UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findBySessionId(sessionId);
+		  if(userCredentialsEntity != null) { 
+			  List<ElectionEntity> electionDateList = new ArrayList<>();
+		  adminRepository.findByElectionDateGreaterThanEqual(date).forEach(electionDateList::add); 
+		  return electionDateList; } else { LoginResponse loginResponse=new
+		  LoginResponse(); loginResponse.setMessage("INVALID SESSION ID");
+		  loginResponse.setResult("unsucessfull"); loginResponse.setSessionId(null);
+		  return loginResponse; } }
 	
 
 }
