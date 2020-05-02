@@ -17,5 +17,8 @@ public interface VoterService {
 	Object getElectionDateFromAllElections(LocalDate date,String sessionId);
 	
 	
-	
+
+	public List<Candidate> getCandidatesById(String candidateId);
+
+	public List<Results> getResultsByElectionId();
 }

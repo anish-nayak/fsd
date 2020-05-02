@@ -58,6 +58,14 @@ public class AdminServiceImpl implements AdminService {
 
 	@Autowired
 	private UserCredentialsRepository userCredentialsRepository;
+	
+	@Autowired
+	private CandidateRepository candidateRepository;
+	
+	@Autowired
+	private ResultRepository resultRepository;
+	
+	
 
 	public Object addElection(ElectionEntity election, String sessionId) {
 		UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findBySessionId(sessionId);
@@ -418,6 +426,15 @@ public class AdminServiceImpl implements AdminService {
 		return "{Invalid credentials, try again}";
 	}
 	
+	
+	public List<Candidate_Entity> getCandidatesById() {
+		List<Candidate_Entity> candidateEntityList = new ArrayList<>();
+				candidateRepository.findAll().forEach(candidateEntityList::add);
+				return candidateEntityList;	}
+	public List<Results_Entity> getResultsByElectionId() {
+		List<Results_Entity> resultEntityList = new ArrayList<>();
+				resultRepository.findAll().forEach(resultEntityList::add);
+				return resultEntityList;	
 
 }
 

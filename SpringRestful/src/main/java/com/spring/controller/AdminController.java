@@ -145,6 +145,15 @@ public class AdminController {
         BeanUtils.copyProperties(usercred, usercredEntity); 
 		return adminService.updatepassword(usercred,sessionId);
 		
+	@GetMapping("evs/voter/candidate/{id}")
+		public List<Candidate> getCandidatesById(@PathVariable(value="id") String candidateId) {
+			return adminService.getCandidatesById(candidateId);
+		}
+	@GetMapping("/evs/election/result")
+		public List<Results> getResultsByElectionId() {
+			return adminService.getResultsByElectionId();
+		}
+		
 	}
 
 }
