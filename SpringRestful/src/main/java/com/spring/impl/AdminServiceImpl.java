@@ -17,8 +17,7 @@ import com.spring.entity.ElectionEntity;
 import com.spring.entity.PartyEntity;
 import com.spring.entity.ResultEntity;
 import com.spring.entity.UserCredentialsEntity;
-
-
+import com.spring.json.Application;
 import com.spring.json.LoginResponse;
 import com.spring.json.Result;
 import com.spring.json.UserCredentials;
@@ -58,12 +57,7 @@ public class AdminServiceImpl implements AdminService {
 
 	@Autowired
 	private UserCredentialsRepository userCredentialsRepository;
-	
-	@Autowired
-	private CandidateRepository candidateRepository;
-	
-	@Autowired
-	private ResultRepository resultRepository;
+
 	
 	
 
@@ -320,7 +314,7 @@ public class AdminServiceImpl implements AdminService {
 
 		if (userCredentialsEntity != null) {
 
-			List<ApplicationEntity> pendingList = applicationRepository.findByApprovedstatus(0);
+			List<ApplicationEntity> pendingList = applicationRepository.findByApprovedStatus(0);
 			if (pendingList != null) {
 				return pendingList;
 			}
@@ -331,7 +325,7 @@ public class AdminServiceImpl implements AdminService {
 		return "{\"result\": \"failure\",\"message\": \"Wrong Session Id\"}";
 
 	}
-}
+
 
 	
 	@Override
@@ -430,8 +424,16 @@ public class AdminServiceImpl implements AdminService {
 		
 		return "{Invalid credentials, try again}";
 	}
+
+
+	@Override
+	public Object updateRequest(ApplicationEntity applicationEntity, String sessionId, String userid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
-	
+	/*
 	public List<Candidate_Entity> getCandidatesById() {
 		List<Candidate_Entity> candidateEntityList = new ArrayList<>();
 				candidateRepository.findAll().forEach(candidateEntityList::add);
@@ -440,6 +442,7 @@ public class AdminServiceImpl implements AdminService {
 		List<Results_Entity> resultEntityList = new ArrayList<>();
 				resultRepository.findAll().forEach(resultEntityList::add);
 				return resultEntityList;	
+				*/
 
 }
 

@@ -136,7 +136,7 @@ public class AdminController {
 	
 	@DeleteMapping(value="voter/delete/{candidateId}")
 	public Object deleteCandidateById(@PathVariable(value="candidateid") String candidateid,@RequestHeader(name="sessionId") String sessionid) {
-		return adminService.deletebyCandidateId(candidateid,sessionId);
+		return adminService.deletebyCandidateId(candidateid,sessionid);
 		
 	}
 	
@@ -145,7 +145,7 @@ public class AdminController {
         BeanUtils.copyProperties(usercred, usercredEntity); 
 		return adminService.updatepassword(usercred,sessionId,newPassword);
 		
-	@GetMapping("evs/voter/candidate/{id}")
+/*	@GetMapping("evs/voter/candidate/{id}")
 		public List<Candidate> getCandidatesById(@PathVariable(value="id") String candidateId) {
 			return adminService.getCandidatesById(candidateId);
 		}
@@ -153,7 +153,7 @@ public class AdminController {
 		public List<Results> getResultsByElectionId() {
 			return adminService.getResultsByElectionId();
 		}
-		
+		*/
 	}
 
 }

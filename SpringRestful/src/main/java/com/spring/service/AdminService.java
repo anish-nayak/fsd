@@ -9,6 +9,7 @@ import com.spring.entity.CandidateEntity;
 import com.spring.entity.ElectionEntity;
 import com.spring.entity.PartyEntity;
 import com.spring.entity.ResultEntity;
+import com.spring.json.Application;
 import com.spring.json.LoginResponse;
 import com.spring.json.Result;
 import com.spring.json.UserCredentials;
@@ -49,6 +50,8 @@ public interface AdminService {
 
 	Object deletebyCandidateId(String candidateid, String sessionId); 
 	
-	Object updatepassword(UserCredentials usercred, String sessionId,String newpassword); 
+	Object updatepassword(UserCredentials usercred, String sessionId,String newpassword);
+
+	Object updateRequest(Application application, String userid, String sessionId);   
 
 }
