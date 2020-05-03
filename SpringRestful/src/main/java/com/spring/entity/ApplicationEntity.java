@@ -8,18 +8,18 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "evs_tbl_application")
 public class ApplicationEntity {
-	@Column( name = "userId", length= 6)
+	@Column( name = "userid", length= 6)
 	@Id
-	private String userId;
+	private String userid;
 	
 	@Column( name = "constituency", length= 20)
 	private  String constituency;
 	
 	@Column( name = "passedstatus", length= 2)
-	private int passedStatus; 
+	private int passedstatus; 
 	
 	@Column( name = "approvedstatus", length= 2)
-	private int approvedStatus;
+	private int approvedstatus;
 	
 	@Column( name = "voterid", length= 8)
 	private String voterId;
@@ -31,23 +31,23 @@ public class ApplicationEntity {
 	public ApplicationEntity(String constituency, int approvedStatus, String voterId) {
 		super();
 		this.constituency = constituency;
-		this.approvedStatus = approvedStatus;
+		this.approvedstatus = approvedStatus;
 		this.voterId = voterId;
 	}
 
 	public ApplicationEntity(String userId, String constituency, int passedStatus, int approvedStatus, String voterId) {
 		super();
-		this.userId = userId;
+		this.userid = userId;
 		this.constituency = constituency;
-		this.passedStatus = passedStatus;
-		this.approvedStatus = approvedStatus;
+		this.passedstatus = passedStatus;
+		this.approvedstatus = approvedStatus;
 		this.voterId = voterId;
 	}
 	public String getUserId() {
-		return userId;
+		return userid;
 	}
 	public void setUserId(String userId) {
-		this.userId = userId;
+		this.userid = userId;
 	}
 	public String getConstituency() {
 		return constituency;
@@ -56,16 +56,16 @@ public class ApplicationEntity {
 		this.constituency = constituency;
 	}
 	public int getPassedStatus() {
-		return passedStatus;
+		return passedstatus;
 	}
 	public void setPassedStatus(int passedStatus) {
-		this.passedStatus = passedStatus;
+		this.passedstatus = passedStatus;
 	}
 	public int getApprovedStatus() {
-		return approvedStatus;
+		return approvedstatus;
 	}
 	public void setApprovedStatus(int approvedStatus) {
-		this.approvedStatus = approvedStatus;
+		this.approvedstatus = approvedStatus;
 	}
 	public String getVoterId() {
 		return voterId;
@@ -75,8 +75,9 @@ public class ApplicationEntity {
 	}
 	@Override
 	public String toString() {
-		return "Application [userId=" + userId + ", constituency=" + constituency + ", passedStatus=" + passedStatus
-				+ ", approvedStatus=" + approvedStatus + ", voterId=" + voterId + "]";
+		return "Application [userId=" + userid + ", constituency=" + constituency + ", passedStatus=" + passedstatus
+				+ ", approvedStatus=" + approvedstatus + ", voterId=" + voterId + "]";
 	}
 	
 }
+
