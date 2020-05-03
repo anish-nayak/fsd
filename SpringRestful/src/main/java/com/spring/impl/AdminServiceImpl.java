@@ -312,21 +312,27 @@ public class AdminServiceImpl implements AdminService {
 
 
 }
-	@Override
-	public List<ApplicationEntity>  getRequest(String sessionId) {
-		
-		UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.
-				findBySessionId(sessionId);
-		
-		
-		if(userCredentialsEntity != null) {
-		
 	
-		return applicationRepository.findByApprovedStatus(0);
-			
+@Override
+	public Object getRequest(String sessionId) {
+
+		UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findBySessionId(sessionId);
+
+		if (userCredentialsEntity != null) {
+
+			List<ApplicationEntity> pendingList = applicationRepository.findByApprovedstatus(0);
+			if (pendingList != null) {
+				return pendingList;
+			}
+			else {
+				return "{\"result\": \"failure\",\"message\": \"No Pending request available.\"}";
+			}
 		}
-       return null;
-    }
+		return "{\"result\": \"failure\",\"message\": \"Wrong Session Id\"}";
+
+	}
+}
+
 	
 	@Override
 	public List<String> candidatesByParty(String partyName,String sessionid) {
