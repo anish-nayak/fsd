@@ -321,7 +321,7 @@ public class AdminServiceImpl implements AdminService {
     }
 	
 	@Override
-	public List<String> candidatesByParty(String partyName,String sessionid) {
+	public Object candidatesByParty(String partyName,String sessionid) {
 		UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findBySessionId(sessionid);
 		if(userCredentialsEntity != null) {
 			List<PartyEntity> partyEntity=partyRepository.findByName(partyName);
@@ -332,7 +332,7 @@ public class AdminServiceImpl implements AdminService {
 			return candidate;
 		}
 		else {
-			return null;
+			return "Invalid Session id";
 		}
 		
 	}
@@ -405,12 +405,11 @@ public class AdminServiceImpl implements AdminService {
 		  return loginResponse; } }
 	
 	@Override
-	public Object updatepassword(UserCredentials usercred, String sessionId) {
+	public Object updatepassword(UserCredentials usercred, String sessionId,String password) {
 		
 		UserCredentialsEntity userCredeEntity = userCredentialsRepository.findBySessionId(sessionId);
 		if(userCredeEntity != null) {
-			userCredeEntity.setUserid(usercred.getUserid());
-			userCredeEntity.setPassword(usercred.getPassword());
+			userCredeEntity.setPassword(password);
 			userCredentialsRepository.save(userCredeEntity);	
 			return "{Password successfully changed}";
 		}

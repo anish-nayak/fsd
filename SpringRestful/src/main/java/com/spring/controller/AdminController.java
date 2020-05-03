@@ -118,7 +118,7 @@ public class AdminController {
 	}
 	
 	@GetMapping(value="party/candidate/{name}")
-	public List<String> detailsByParty(@PathVariable(name="name") String partyName,@RequestHeader(name="sessionId") String sessionId){
+	public Object detailsByParty(@PathVariable(name="name") String partyName,@RequestHeader(name="sessionId") String sessionId){
 		return adminService.candidatesByParty(partyName,sessionId);	
 	}
 	
@@ -130,20 +130,20 @@ public class AdminController {
 	}
 	@DeleteMapping(value="election/delete/{electionid}")
 	public Object deleteElectionById(@PathVariable(value="electionid") String electionId,@RequestHeader(name="sessionId") String sessionid) {
-		return adminService.deletebyElectionId(electionId,sessionId);
+		return adminService.deletebyElectionId(electionId,sessionid);
 		
 	}
 	
 	@DeleteMapping(value="voter/delete/{candidateId}")
-	public Object deleteCandidateById(@PathVariable(value="candidateId") String candidateid,@RequestHeader(name="sessionId") String sessionid) {
+	public Object deleteCandidateById(@PathVariable(value="candidateid") String candidateid,@RequestHeader(name="sessionId") String sessionid) {
 		return adminService.deletebyCandidateId(candidateid,sessionId);
 		
 	}
 	
 	@PutMapping(value="/user/changePassword",produces=MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE)
-	public Object resultStatus(@RequestBody UserCredentials usercred,UserCredentialsEntity usercredEntity,@RequestHeader(name="sessionId") String sessionId) {
+	public Object password(@RequestBody UserCredentials usercred,UserCredentialsEntity usercredEntity,@RequestHeader(name="sessionId") String sessionId,@RequestHeader(name="new password") String newPassword) {
         BeanUtils.copyProperties(usercred, usercredEntity); 
-		return adminService.updatepassword(usercred,sessionId);
+		return adminService.updatepassword(usercred,sessionId,newPassword);
 		
 	}
 

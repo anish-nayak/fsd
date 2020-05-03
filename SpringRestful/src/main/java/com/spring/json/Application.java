@@ -10,6 +10,15 @@ public class Application {
 	public Application() {
 		super();
 	}
+	
+	public Application(String constituency, int passedStatus, int approvedStatus, String voterId) {
+		super();
+		this.constituency = constituency;
+		this.passedStatus = passedStatus;
+		this.approvedStatus = approvedStatus;
+		this.voterId = voterId;
+	}
+
 	public Application(String userId, String constituency, int passedStatus, int approvedStatus, String voterId) {
 		super();
 		this.userId = userId;

@@ -41,7 +41,7 @@ public interface AdminService {
 
 	List<ApplicationEntity> getRequest(String sessionId);
 	
-	List<String> candidatesByParty(String partyName,String sessionid);
+	Object candidatesByParty(String partyName,String sessionid);
 
 	Object update(String candidateid, Result result, String sessionId);
 
@@ -49,6 +49,6 @@ public interface AdminService {
 
 	Object deletebyCandidateId(String candidateid, String sessionId); 
 	
-	Object updatepassword(UserCredentials usercred, String sessionId); 
+	Object updatepassword(UserCredentials usercred, String sessionId,String newpassword); 
 
 }
