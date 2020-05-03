@@ -89,8 +89,8 @@ public class AdminController {
 		 
 	
 		
-	@GetMapping(value="/application/request")
-	public List<ApplicationEntity> getRequest(){
+	@GetMapping(value="/user/request")
+	public Object getRequest(@RequestHeader(name = "sessionId") String sessionId){
 		return adminService.getRequest(sessionId);
 	}
 	
