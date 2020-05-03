@@ -95,13 +95,13 @@ public class AdminController {
 	}
 	
 	@PostMapping(value="/application/{userid}/update",produces=MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE)
-	public Object updateRequest(@RequestBody ApplicationEntity 
-			applicationEntity,Application
-			application,@RequestHeader(name = "sessionId") String sessionId,
+	public Object updateRequest(@RequestBody Application
+			application,ApplicationEntity 
+			applicationEntity ,@RequestHeader(name = "sessionId") String sessionId,
 			@PathVariable(name="userid") String userid
 			){
        BeanUtils.copyProperties(application,applicationEntity);
-		return adminService.updateRequest(applicationEntity,userid,sessionId);
+		return adminService.updateRequest(application,userid,sessionId);
 	}
 
 	@PostMapping("/login")
@@ -144,6 +144,15 @@ public class AdminController {
 	public Object password(@RequestBody UserCredentials usercred,UserCredentialsEntity usercredEntity,@RequestHeader(name="sessionId") String sessionId,@RequestHeader(name="new password") String newPassword) {
         BeanUtils.copyProperties(usercred, usercredEntity); 
 		return adminService.updatepassword(usercred,sessionId,newPassword);
+		
+	@GetMapping("evs/voter/candidate/{id}")
+		public List<Candidate> getCandidatesById(@PathVariable(value="id") String candidateId) {
+			return adminService.getCandidatesById(candidateId);
+		}
+	@GetMapping("/evs/election/result")
+		public List<Results> getResultsByElectionId() {
+			return adminService.getResultsByElectionId();
+		}
 		
 	}
 

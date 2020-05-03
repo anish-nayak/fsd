@@ -58,6 +58,14 @@ public class AdminServiceImpl implements AdminService {
 
 	@Autowired
 	private UserCredentialsRepository userCredentialsRepository;
+	
+	@Autowired
+	private CandidateRepository candidateRepository;
+	
+	@Autowired
+	private ResultRepository resultRepository;
+	
+	
 
 	public Object addElection(ElectionEntity election, String sessionId) {
 		UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findBySessionId(sessionId);
@@ -232,7 +240,6 @@ public class AdminServiceImpl implements AdminService {
 		
 			UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findBySessionId(sessionId);
 	
-			ElectionEntity electionEntity=adminRepository.findByElectionid(electionid);
 			if(userCredentialsEntity != null) {
 				String id = generateRandomString(6);
 				candidate.setCandidateId(id);
@@ -253,7 +260,7 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public Object getCandidateDetails(String sessionId) {
 		UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findBySessionId(sessionId);
-	//ElectionEntity electionEntity=adminRepository.findByElectionid(electionid);
+	
 		if(userCredentialsEntity != null) {
 			List<CandidateEntity> candidateList = new ArrayList<>();
 			candidateRepository.findAll().forEach(candidateList::add);
@@ -278,7 +285,7 @@ public class AdminServiceImpl implements AdminService {
 
 
 	@Override
-	public Object  updateRequest(ApplicationEntity applicationEntity,String sessionId,String userid) {
+	public Object  updateRequest(Application application,String sessionId,String userid) {
 		
 		UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.
 				findBySessionId(sessionId);
@@ -287,11 +294,12 @@ public class AdminServiceImpl implements AdminService {
 		if(userCredentialsEntity != null) {
 			ApplicationEntity app=applicationRepository.findByUserId(userid);
 			if(app!=null) {
+				app.setVoterId(application.getVoterId());
 		    app.setApprovedStatus(app.getApprovedStatus());
 		    app.setPassedStatus(app.getPassedStatus());
 		    app.setConstituency(app.getConstituency());
 		    applicationRepository.save(app);
-		    return app;
+		    return "{\"result\": \"Success\",\"message\": \"Updated Successfully.\"}";
 			}
 			else
 				return "{\"result\": \"failure\",\"message\": \"Wrong User Id\"}";
@@ -417,6 +425,15 @@ public class AdminServiceImpl implements AdminService {
 		return "{Invalid credentials, try again}";
 	}
 	
+	
+	public List<Candidate_Entity> getCandidatesById() {
+		List<Candidate_Entity> candidateEntityList = new ArrayList<>();
+				candidateRepository.findAll().forEach(candidateEntityList::add);
+				return candidateEntityList;	}
+	public List<Results_Entity> getResultsByElectionId() {
+		List<Results_Entity> resultEntityList = new ArrayList<>();
+				resultRepository.findAll().forEach(resultEntityList::add);
+				return resultEntityList;	
 
 }
 
