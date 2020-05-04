@@ -202,7 +202,7 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public Object addCandidate(CandidateEntity candidate, String sessionId, String electionid) {
+	public Object addCandidate(CandidateEntity candidate, String sessionId, Long electionid) {
 		Random random = new Random();
 		UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findBySessionId(sessionId);
 
@@ -240,7 +240,7 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public Object updateRequest(Application application, String sessionId, String userid) {
+	public Object updateRequest(Application application, String sessionId, Long userid) {
 
 		UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findBySessionId(sessionId);
 
@@ -297,7 +297,7 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public Object update(String candidateid, Result result, String sessionId) {
+	public Object update(Long candidateid, Result result, String sessionId) {
 		UserCredentialsEntity userCred = userCredentialsRepository.findBySessionId(sessionId);
 		;
 		if (userCred != null) {
@@ -317,7 +317,7 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public Object deletebyElectionId(String electionId, String sessionId) {
+	public Object deletebyElectionId(Long electionId, String sessionId) {
 
 		UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findBySessionId(sessionId);
 		if (userCredentialsEntity != null) {
@@ -331,7 +331,7 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public Object deletebyCandidateId(String candidateid, String sessionId) {
+	public Object deletebyCandidateId(Long candidateid, String sessionId) {
 		UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findBySessionId(sessionId);
 		if (userCredentialsEntity != null) {
 			List<CandidateEntity> candy = candidateRepository.findByCandidateId(candidateid);
@@ -372,11 +372,6 @@ public class AdminServiceImpl implements AdminService {
 		return "{Invalid credentials, try again}";
 	}
 
-	@Override
-	public Object updateRequest(ApplicationEntity applicationEntity, String sessionId, String userid) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	/*
 	 * public List<Candidate_Entity> getCandidatesById() { List<Candidate_Entity>

@@ -9,7 +9,7 @@ import com.spring.entity.ApplicationEntity;
 
 public interface ApplicationRepository extends JpaRepository<ApplicationEntity, String> {
        
-		ApplicationEntity findByUserId(String userid);
+		ApplicationEntity findByUserId(Long userid);
 		
 		List<ApplicationEntity> findByApprovedStatus(int approvedstatus);
 }

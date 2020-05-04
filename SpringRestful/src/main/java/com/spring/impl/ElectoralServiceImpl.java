@@ -51,7 +51,7 @@ public class ElectoralServiceImpl implements ElectoralServices {
 	
 
 	@Override
-	public Object generateVoterId(Application application, String userid,String sessionId) {
+	public Object generateVoterId(Application application, Long userid,String sessionId) {
 			ApplicationEntity app = applicationrepo.findByUserId(userid);
 			if(app != null) {
 				app.setVoterId(application.getVoterId());

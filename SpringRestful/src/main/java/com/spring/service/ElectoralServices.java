@@ -6,9 +6,8 @@ import com.spring.json.User;
 
 public interface ElectoralServices {
 
-
-	Object generateVoterId(Application application, String userid, String sessionId);
-
 	Object getApprovedUser(String sessionId);
+
+	Object generateVoterId(Application application, Long userid, String sessionId);
 
 }

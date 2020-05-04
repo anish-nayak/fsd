@@ -31,27 +31,22 @@ public interface AdminService {
 	
 	Object getAllElectionFromElectionDate(LocalDate date,String sessionId);
 	
-
 	Object getCandidateDetails(String sessionId);
 
-	
-
-	Object addCandidate(CandidateEntity candidate, String sessionId, String electionid);
-
-	Object updateRequest(ApplicationEntity applicationEntity,String sessionId, String userid);
+	Object addCandidate(CandidateEntity candidate, String sessionId, Long electionid);
 
 	Object getRequest(String sessionId);
 	
 	Object candidatesByParty(String partyName,String sessionid);
 
-	Object update(String candidateid, Result result, String sessionId);
+	Object update(Long candidateid, Result result, String sessionId);
 
-	Object deletebyElectionId(String electionId, String sessionId);
+	Object deletebyElectionId(Long electionId, String sessionId);
 
-	Object deletebyCandidateId(String candidateid, String sessionId); 
+	Object deletebyCandidateId(Long candidateid, String sessionId); 
 	
 	Object updatepassword(UserCredentials usercred, String sessionId,String newpassword);
 
-	Object updateRequest(Application application, String userid, String sessionId);   
+	Object updateRequest(Application application, String sessionId, Long userid);   
 
 }

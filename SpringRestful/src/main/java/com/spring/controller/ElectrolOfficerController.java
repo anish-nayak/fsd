@@ -41,7 +41,7 @@ public class ElectrolOfficerController {
 	public Object updateRequest2(@RequestBody Application
 			application,ApplicationEntity 
 			applicationEntity ,@RequestHeader(name = "sessionId") String sessionId,
-			@PathVariable(name="userid") String userid
+			@PathVariable(name="userid") Long userid
 			){
        BeanUtils.copyProperties(application,applicationEntity);
 		return eoService.generateVoterId(application,userid,sessionId);

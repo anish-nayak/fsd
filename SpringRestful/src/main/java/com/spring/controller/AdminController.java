@@ -51,7 +51,7 @@ public class AdminController {
 	
 	@PostMapping("/election/{electionid}/party/{partyid}/candidate")
 	public Object addCandidateDetails(@RequestBody Candidate candidate, CandidateEntity candidateEntity, @RequestHeader(name = "sessionId")
-	String sessionId,@PathVariable(name="electionid") String electionid,@PathVariable(name="partyid") String partyid) {
+	String sessionId,@PathVariable(name="electionid") Long electionid,@PathVariable(name="partyid") Long partyid) {
 		BeanUtils.copyProperties(candidate, candidateEntity);
 		return adminService.addCandidate(candidateEntity,sessionId,electionid);
 	}
@@ -98,10 +98,10 @@ public class AdminController {
 	public Object updateRequest(@RequestBody Application
 			application,ApplicationEntity 
 			applicationEntity ,@RequestHeader(name = "sessionId") String sessionId,
-			@PathVariable(name="userid") String userid
+			@PathVariable(name="userid") Long userid
 			){
        BeanUtils.copyProperties(application,applicationEntity);
-		return adminService.updateRequest(application,userid,sessionId);
+		return adminService.updateRequest(application,sessionId,userid);
 	}
 
 	
@@ -124,19 +124,19 @@ public class AdminController {
 	}
 	
 	@PutMapping(value="/election/results/approval/{candidateId}",produces=MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE)
-	public Object resultStatus(@PathVariable(value="candidateId") String candidateid,@RequestBody Result result,ResultEntity resultEntity,@RequestHeader(name="sessionId") String sessionId) {
+	public Object resultStatus(@PathVariable(value="candidateId") Long candidateid,@RequestBody Result result,ResultEntity resultEntity,@RequestHeader(name="sessionId") String sessionId) {
         BeanUtils.copyProperties(result, resultEntity); 
 		return adminService.update(candidateid,result,sessionId);
 		
 	}
 	@DeleteMapping(value="election/delete/{electionid}")
-	public Object deleteElectionById(@PathVariable(value="electionid") String electionId,@RequestHeader(name="sessionId") String sessionid) {
+	public Object deleteElectionById(@PathVariable(value="electionid") Long electionId,@RequestHeader(name="sessionId") String sessionid) {
 		return adminService.deletebyElectionId(electionId,sessionid);
 		
 	}
 	
 	@DeleteMapping(value="voter/delete/{candidateId}")
-	public Object deleteCandidateById(@PathVariable(value="candidateid") String candidateid,@RequestHeader(name="sessionId") String sessionid) {
+	public Object deleteCandidateById(@PathVariable(value="candidateid") Long candidateid,@RequestHeader(name="sessionId") String sessionid) {
 		return adminService.deletebyCandidateId(candidateid,sessionid);
 		
 	}
@@ -146,15 +146,6 @@ public class AdminController {
         BeanUtils.copyProperties(usercred, usercredEntity); 
 		return adminService.updatepassword(usercred,sessionId,newPassword);
 		
-/*	@GetMapping("evs/voter/candidate/{id}")
-		public List<Candidate> getCandidatesById(@PathVariable(value="id") String candidateId) {
-			return adminService.getCandidatesById(candidateId);
-		}
-	@GetMapping("/evs/election/result")
-		public List<Results> getResultsByElectionId() {
-			return adminService.getResultsByElectionId();
-		}
-		*/
 	}
 
 }

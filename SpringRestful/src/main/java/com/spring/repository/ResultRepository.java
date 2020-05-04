@@ -8,6 +8,6 @@ import com.spring.entity.ResultEntity;
 
 @Repository
 public interface ResultRepository extends JpaRepository<ResultEntity, Long> {
-	ResultEntity findByCandidateId(String id);
+	ResultEntity findByCandidateId(Long candidateid);
 
 }
