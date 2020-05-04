@@ -13,12 +13,11 @@ import com.spring.entity.ElectionEntity;
 @Repository
 public interface AdminRepository extends JpaRepository<ElectionEntity, String> {
 
-	Iterable<ElectionEntity> findByElectionDateGreaterThanEqual(LocalDate date);
+	Iterable<ElectionEntity> findByElectiondateGreaterThanEqual(LocalDate date);
 
 	ElectionEntity findByElectionid(String electionid); //
 
 	
 
 	
-
 }

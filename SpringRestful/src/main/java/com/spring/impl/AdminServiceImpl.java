@@ -56,7 +56,7 @@ public class AdminServiceImpl implements AdminService {
 	private UserCredentialsRepository userCredentialsRepository;
 
 	public Object addElection(ElectionEntity election, String sessionId) {
-		UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findBySessionId(sessionId);
+		UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findBySessionid(sessionId);
 		if (userCredentialsEntity != null) {
 			String id = generateRandomString(6);
 			adminRepository.save(election);
@@ -72,7 +72,7 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	public Object getElectionDetails(String sessionId) {
-		UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findBySessionId(sessionId);
+		UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findBySessionid(sessionId);
 		if (userCredentialsEntity != null) {
 			List<ElectionEntity> electionList = new ArrayList<>();
 			adminRepository.findAll().forEach(electionList::add);
@@ -109,7 +109,7 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public Object getPartyDetails(String sessionId) {
-		UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findBySessionId(sessionId);
+		UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findBySessionid(sessionId);
 		if (userCredentialsEntity != null) {
 			List<PartyEntity> partyList = new ArrayList<>();
 			partyRepository.findAll().forEach(partyList::add);
@@ -125,7 +125,7 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public Object addParty(PartyEntity party, String sessionId) {
-		UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findBySessionId(sessionId);
+		UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findBySessionid(sessionId);
 		if (userCredentialsEntity != null) {
 			Long id = random.nextLong();
 			party.setPartyid(id);
@@ -191,7 +191,7 @@ public class AdminServiceImpl implements AdminService {
 		if (sessionId == null) {
 			response.setMessage("INVALID SESSIONID");
 		} else {
-			UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findBySessionId(sessionId);
+			UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findBySessionid(sessionId);
 			userCredentialsEntity.setSessionId(null);
 			userCredentialsEntity.setLoginStatus(0);
 
@@ -204,7 +204,7 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public Object addCandidate(CandidateEntity candidate, String sessionId, Long electionid) {
 		Random random = new Random();
-		UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findBySessionId(sessionId);
+		UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findBySessionid(sessionId);
 
 		if (userCredentialsEntity != null) {
 			Long id = random.nextLong();
@@ -223,7 +223,7 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public Object getCandidateDetails(String sessionId) {
-		UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findBySessionId(sessionId);
+		UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findBySessionid(sessionId);
 
 		if (userCredentialsEntity != null) {
 			List<CandidateEntity> candidateList = new ArrayList<>();
@@ -242,10 +242,10 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public Object updateRequest(Application application, String sessionId, Long userid) {
 
-		UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findBySessionId(sessionId);
+		UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findBySessionid(sessionId);
 
 		if (userCredentialsEntity != null) {
-			ApplicationEntity app = applicationRepository.findByUserId(userid);
+			ApplicationEntity app = applicationRepository.findByUserid(userid);
 			if (app != null) {
 				app.setVoterId(application.getVoterId());
 				app.setApprovedStatus(app.getApprovedStatus());
@@ -265,11 +265,11 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public Object getRequest(String sessionId) {
 
-		UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findBySessionId(sessionId);
+		UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findBySessionid(sessionId);
 
 		if (userCredentialsEntity != null) {
 
-			List<ApplicationEntity> pendingList = applicationRepository.findByApprovedStatus(0);
+			List<ApplicationEntity> pendingList = applicationRepository.findByApprovedstatus(0);
 			if (pendingList != null) {
 				return pendingList;
 			} else {
@@ -282,7 +282,7 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public Object candidatesByParty(String partyName, String sessionid) {
-		UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findBySessionId(sessionid);
+		UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findBySessionid(sessionid);
 		if (userCredentialsEntity != null) {
 			List<PartyEntity> partyEntity = partyRepository.findByName(partyName);
 			PartyEntity party = partyEntity.get(0);
@@ -298,10 +298,10 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public Object update(Long candidateid, Result result, String sessionId) {
-		UserCredentialsEntity userCred = userCredentialsRepository.findBySessionId(sessionId);
+		UserCredentialsEntity userCred = userCredentialsRepository.findBySessionid(sessionId);
 		;
 		if (userCred != null) {
-			ResultEntity resultent = resultRepository.findByCandidateId(candidateid);
+			ResultEntity resultent = resultRepository.findByCandidateid(candidateid);
 			if (resultent != null) {
 				resultent.setElectionId(result.getElectionId());
 				resultent.setCandidateId(result.getCandidateId());
@@ -319,7 +319,7 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public Object deletebyElectionId(Long electionId, String sessionId) {
 
-		UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findBySessionId(sessionId);
+		UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findBySessionid(sessionId);
 		if (userCredentialsEntity != null) {
 			List<ElectionEntity> elect = electionRepository.findByElectionid(electionId);
 			ElectionEntity el = elect.get(0);
@@ -332,9 +332,9 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public Object deletebyCandidateId(Long candidateid, String sessionId) {
-		UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findBySessionId(sessionId);
+		UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findBySessionid(sessionId);
 		if (userCredentialsEntity != null) {
-			List<CandidateEntity> candy = candidateRepository.findByCandidateId(candidateid);
+			List<CandidateEntity> candy = candidateRepository.findByCandidateid(candidateid);
 			CandidateEntity can = candy.get(0);
 			candidateRepository.delete(can);
 			return "{Succesfully deleted}";
@@ -345,10 +345,10 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public Object getAllElectionFromElectionDate(LocalDate date, String sessionId) {
-		UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findBySessionId(sessionId);
+		UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findBySessionid(sessionId);
 		if (userCredentialsEntity != null) {
 			List<ElectionEntity> electionDateList = new ArrayList<>();
-			adminRepository.findByElectionDateGreaterThanEqual(date).forEach(electionDateList::add);
+			adminRepository.findByElectiondateGreaterThanEqual(date).forEach(electionDateList::add);
 			return electionDateList;
 		} else {
 			LoginResponse loginResponse = new LoginResponse();
@@ -362,7 +362,7 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public Object updatepassword(UserCredentials usercred, String sessionId, String password) {
 
-		UserCredentialsEntity userCredeEntity = userCredentialsRepository.findBySessionId(sessionId);
+		UserCredentialsEntity userCredeEntity = userCredentialsRepository.findBySessionid(sessionId);
 		if (userCredeEntity != null) {
 			userCredeEntity.setPassword(password);
 			userCredentialsRepository.save(userCredeEntity);

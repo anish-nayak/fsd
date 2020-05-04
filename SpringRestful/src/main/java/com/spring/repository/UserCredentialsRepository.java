@@ -10,7 +10,7 @@ import com.spring.entity.UserCredentialsEntity;
 public interface UserCredentialsRepository extends JpaRepository<UserCredentialsEntity, Long> {
 
 	
-	UserCredentialsEntity findBySessionId(String sessionId);
+	UserCredentialsEntity findBySessionid(String sessionId);
 
 	//Optional<UserCredentialsEntity> findById(long userid);
 
