@@ -40,4 +40,18 @@ public class VoterController {
 			@PathVariable(value = "userid") Long userid) {
 		return voterService.sendRequest(application,userid,sessionId);
 	}
+	
+	@GetMapping(value = "/voter/status",produces=MediaType.APPLICATION_JSON_VALUE)
+	public Object statusVoter(@RequestHeader(name = "sessionid") String sessionid,
+			@PathVariable(name = "userid") long userid) {
+	
+		return voterService.statusVoter(sessionId,userid);
+
+	}
+	@GetMapping(value = "/voter/schedule", produces = MediaType.APPLICATION_JSON_VALUE)
+	public Object upcomingElection(@RequestHeader(name = "sessionid") String sessionid) {
+
+		return voterService.viewSchedule(sessionid);
+	}
+	
 }

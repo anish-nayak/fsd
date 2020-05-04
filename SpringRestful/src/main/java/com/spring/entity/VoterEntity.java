@@ -27,17 +27,17 @@ public class VoterEntity {
 	@Column(name = "loginstatus")
 	private int loginStatus;
 
-	@Column(name = "session_id")
-	private String sessionId;
+	@Column(name = "sessionid")
+	private String sessionid;
 
-	@Column(name = "firstName")
+	@Column(name = "firstname")
 	private String firstName;
 
-	@Column(name = "lastName")
+	@Column(name = "lastname")
 	private String lastName;
 
-	@Column(name = "dateOfBirth")
-	private LocalDate dateOfBirth;
+	@Column(name = "dateofbirth")
+	private LocalDate dateofbirth;
 
 	@Column(name = "gender")
 	private String gender;
@@ -66,10 +66,10 @@ public class VoterEntity {
 		this.password = password;
 		this.usertype = usertype;
 		this.loginStatus = loginStatus;
-		this.sessionId = sessionId;
+		this.sessionid = sessionId;
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.dateOfBirth = dateOfBirth;
+		this.dateofbirth = dateOfBirth;
 		this.gender = gender;
 		this.street = street;
 		this.location = location;
@@ -129,11 +129,11 @@ public class VoterEntity {
 	}
 
 	public String getSessionId() {
-		return sessionId;
+		return sessionid;
 	}
 
 	public void setSessionId(String sessionId) {
-		this.sessionId = sessionId;
+		this.sessionid = sessionId;
 	}
 
 	public String getFirstName() {
@@ -153,11 +153,11 @@ public class VoterEntity {
 	}
 
 	public LocalDate getDateOfBirth() {
-		return dateOfBirth;
+		return dateofbirth;
 	}
 
 	public void setDateOfBirth(LocalDate dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
+		this.dateofbirth = dateOfBirth;
 	}
 
 	public String getGender() {
@@ -203,8 +203,8 @@ public class VoterEntity {
 	@Override
 	public String toString() {
 		return "VoterEntity [userid=" + userid + ", password=" + password + ", usertype=" + usertype + ", loginStatus="
-				+ loginStatus + ", sessionId=" + sessionId + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", dateOfBirth=" + dateOfBirth + ", gender=" + gender + ", street=" + street + ", location="
+				+ loginStatus + ", sessionId=" + sessionid + ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", dateOfBirth=" + dateofbirth + ", gender=" + gender + ", street=" + street + ", location="
 				+ location + ", city=" + city + ", state=" + state + "]";
 	}
 

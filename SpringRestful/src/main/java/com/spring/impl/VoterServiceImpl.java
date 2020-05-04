@@ -2,12 +2,15 @@ package com.spring.impl;
 
 import java.security.SecureRandom;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.spring.entity.ApplicationEntity;
+import com.spring.entity.ElectionEntity;
 import com.spring.entity.UserCredentialsEntity;
 import com.spring.entity.UserEntity;
 import com.spring.entity.VoterEntity;
@@ -93,6 +96,44 @@ public class VoterServiceImpl implements VoterService{
 		return null;
 	}
 
+	@Override
+public Object statusVoter(String sessionid,Long userid) {
+
+	UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findBySessionid(sessionid);
+	if(userCredentialsEntity != null) {
+		ApplicationEntity applicatEntity=new ApplicationEntity();
+		applicatEntity=applicationRepository.findByUserid(userid);
+		return applicatEntity;
+		}
 	
+			else {
+			 LoginResponse loginResponse=new LoginResponse();
+		 loginResponse.setMessage("INVALID SESSION ID");
+			 loginResponse.setResult("unsucessfull");
+			 loginResponse.setSessionId(null);
+			 return loginResponse;
+			}
+		
+	}
+
+	@Override
+	public Object viewSchedule(String sessionid) {
+	LocalDate localDate = LocalDate.now();
+			UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findBySessionid(sessionid);
+			if (userCredentialsEntity != null) {
+				List<ElectionEntity> electionDateList = new ArrayList<>();
+				electionRepository.findByElectiondateGreaterThanEqual(localDate).forEach(electionDateList::add);
+				return electionDateList;
+			} 
+			else {
+				LoginResponse loginResponse = new LoginResponse();
+				loginResponse.setMessage("INVALID SESSION ID");
+				loginResponse.setResult("unsucessfull");
+				loginResponse.setSessionId(null);
+				return loginResponse;
+			}
+	}
+		
+	}
 	
-}
+

@@ -20,6 +20,10 @@ public interface VoterService {
 	Object registerVoter(Voter voter);
 
 	Object sendRequest(Application application, Long userid, String sessionId);
+
+	Object statusVoter(String sessionid, Long userid);
+
+	Object viewSchedule(String sessionid);
 	
 
 }

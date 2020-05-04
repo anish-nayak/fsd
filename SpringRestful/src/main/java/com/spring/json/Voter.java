@@ -9,7 +9,7 @@ public class Voter {
 	private String password;
 	private String usertype;
 	private int loginStatus;
-	private String sessionId;
+	private String sessionid;
 
 	
 	private String firstName;
@@ -33,7 +33,7 @@ public class Voter {
 		this.password = password;
 		this.usertype = usertype;
 		this.loginStatus = loginStatus;
-		this.sessionId = sessionId;
+		this.sessionid = sessionId;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.dateOfBirth = dateOfBirth;
@@ -68,10 +68,10 @@ public class Voter {
 		this.loginStatus = loginStatus;
 	}
 	public String getSessionId() {
-		return sessionId;
+		return sessionid;
 	}
 	public void setSessionId(String sessionId) {
-		this.sessionId = sessionId;
+		this.sessionid = sessionId;
 	}
 	public String getFirstName() {
 		return firstName;
@@ -124,7 +124,7 @@ public class Voter {
 	@Override
 	public String toString() {
 		return "Voter [userid=" + userid + ", password=" + password + ", usertype=" + usertype + ", loginStatus="
-				+ loginStatus + ", sessionId=" + sessionId + ", firstName=" + firstName + ", lastName=" + lastName
+				+ loginStatus + ", sessionId=" + sessionid + ", firstName=" + firstName + ", lastName=" + lastName
 				+ ", dateOfBirth=" + dateOfBirth + ", gender=" + gender + ", street=" + street + ", location="
 				+ location + ", city=" + city + ", state=" + state + "]";
 	}
