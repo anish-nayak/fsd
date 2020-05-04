@@ -12,4 +12,6 @@ public interface ApplicationRepository extends JpaRepository<ApplicationEntity, 
 		ApplicationEntity findByUserid(Long userid);
 		
 		List<ApplicationEntity> findByApprovedstatus(int approvedstatus);
+
+		ApplicationEntity findByPassedstatus(int i);
 }

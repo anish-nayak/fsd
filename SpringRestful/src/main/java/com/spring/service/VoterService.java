@@ -3,22 +3,23 @@ package com.spring.service;
 import java.time.LocalDate;
 
 import com.spring.entity.UserEntity;
+import com.spring.json.Application;
+import com.spring.json.Voter;
 
 
 public interface VoterService {
 	
+
 	
-	Object registerVoter(UserEntity user, String userid);
+	//Object statusVoter(String userid);
 	
-	Object statusVoter(String userid);
+	//Object addVoterRequest(UserEntity user, String sessionId);
 	
-	Object addVoterRequest(UserEntity user, String sessionId);
-	
-	Object getElectionDateFromAllElections(LocalDate date,String sessionId);
-	
+	//Object getElectionDateFromAllElections(LocalDate date,String sessionId);
+
+	Object registerVoter(Voter voter);
+
+	Object sendRequest(Application application, Long userid, String sessionId);
 	
 
-//	public List<Candidate> getCandidatesById(String candidateId);
-
-	//public List<Results> getResultsByElectionId();
 }
