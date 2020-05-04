@@ -104,6 +104,7 @@ public class AdminController {
 		return adminService.updateRequest(application,userid,sessionId);
 	}
 
+	
 	@PostMapping("/login")
 	public LoginResponse loginAdmin(@RequestBody UserCredentials userCredentials,
 			UserCredentialsEntity userCredentialsEntity) {
