@@ -60,12 +60,11 @@ public class AdminServiceImpl implements AdminService {
 
 	
 	
-
-	public Object addElection(ElectionEntity election, String sessionId) {
+public Object addElection(ElectionEntity election, String sessionId) {
 		UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findBySessionId(sessionId);
 		if(userCredentialsEntity != null) {
 			String id = generateRandomString(6);
-			election.setElectionid(id);
+			//election.setElectionid(id);
 			adminRepository.save(election);
 			return election;
 		}
@@ -95,6 +94,7 @@ public class AdminServiceImpl implements AdminService {
 			 return loginResponse;
 		}
 	}
+	
 	
 
 	private final Random random = new SecureRandom();
