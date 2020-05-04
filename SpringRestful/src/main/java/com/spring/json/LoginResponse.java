@@ -4,7 +4,7 @@ public class LoginResponse {
 
 	private String result;
 	private String message;
-	private String sessionId;
+	private String sessionid;
 
 	public String getResult() {
 		return result;
@@ -23,11 +23,16 @@ public class LoginResponse {
 	}
 
 	public String getSessionId() {
-		return sessionId;
+		return sessionid;
 	}
 
 	public void setSessionId(String sessionId) {
-		this.sessionId = sessionId;
+		this.sessionid = sessionId;
+	}
+
+	@Override
+	public String toString() {
+		return "LoginResponse [result=" + result + ", message=" + message + ", sessionid=" + sessionid + "]";
 	}
 
 }

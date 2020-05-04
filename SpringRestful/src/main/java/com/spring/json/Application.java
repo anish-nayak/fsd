@@ -1,37 +1,37 @@
 package com.spring.json;
 
 public class Application {
-	private String userId;
+	private Long userid;
 	private  String constituency;
-	private int passedStatus; 
-	private int approvedStatus;
-	private String voterId;
+	private int passedstatus; 
+	private int approvedstatus;
+	private Long voterid;
 	
 	public Application() {
 		super();
 	}
 	
-	public Application(String constituency, int passedStatus, int approvedStatus, String voterId) {
+	public Application(String constituency, int passedStatus, int approvedStatus, Long voterId) {
 		super();
 		this.constituency = constituency;
-		this.passedStatus = passedStatus;
-		this.approvedStatus = approvedStatus;
-		this.voterId = voterId;
+		this.passedstatus = passedStatus;
+		this.approvedstatus = approvedStatus;
+		this.voterid = voterId;
 	}
 
-	public Application(String userId, String constituency, int passedStatus, int approvedStatus, String voterId) {
+	public Application(Long userId, String constituency, int passedStatus, int approvedStatus, Long voterId) {
 		super();
-		this.userId = userId;
+		this.userid = userId;
 		this.constituency = constituency;
-		this.passedStatus = passedStatus;
-		this.approvedStatus = approvedStatus;
-		this.voterId = voterId;
+		this.passedstatus = passedStatus;
+		this.approvedstatus = approvedStatus;
+		this.voterid = voterId;
 	}
-	public String getUserId() {
-		return userId;
+	public Long getUserId() {
+		return userid;
 	}
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setUserId(Long userId) {
+		this.userid = userId;
 	}
 	public String getConstituency() {
 		return constituency;
@@ -40,27 +40,27 @@ public class Application {
 		this.constituency = constituency;
 	}
 	public int getPassedStatus() {
-		return passedStatus;
+		return passedstatus;
 	}
 	public void setPassedStatus(int passedStatus) {
-		this.passedStatus = passedStatus;
+		this.passedstatus = passedStatus;
 	}
 	public int getApprovedStatus() {
-		return approvedStatus;
+		return approvedstatus;
 	}
 	public void setApprovedStatus(int approvedStatus) {
-		this.approvedStatus = approvedStatus;
+		this.approvedstatus = approvedStatus;
 	}
-	public String getVoterId() {
-		return voterId;
+	public Long getVoterId() {
+		return voterid;
 	}
-	public void setVoterId(String voterId) {
-		this.voterId = voterId;
+	public void setVoterId(Long voterId) {
+		this.voterid = voterId;
 	}
 	@Override
 	public String toString() {
-		return "Application [userId=" + userId + ", constituency=" + constituency + ", passedStatus=" + passedStatus
-				+ ", approvedStatus=" + approvedStatus + ", voterId=" + voterId + "]";
+		return "Application [userId=" + userid + ", constituency=" + constituency + ", passedStatus=" + passedstatus
+				+ ", approvedStatus=" + approvedstatus + ", voterId=" + voterid + "]";
 	}
 	
 }

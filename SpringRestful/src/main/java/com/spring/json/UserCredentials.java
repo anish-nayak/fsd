@@ -6,7 +6,7 @@ public class UserCredentials {
 	private String password;
 	private String usertype;
 	private int loginStatus;
-	private String sessionId;
+	private String sessionid;
 
 	public UserCredentials() {
 		super();
@@ -18,7 +18,7 @@ public class UserCredentials {
 		this.password = password;
 		this.usertype = usertype;
 		this.loginStatus = loginStatus;
-		this.sessionId = sessionId;
+		this.sessionid = sessionId;
 	}
 
 	public long getUserid() {
@@ -54,11 +54,17 @@ public class UserCredentials {
 	}
 
 	public String getSessionId() {
-		return sessionId;
+		return sessionid;
 	}
 
 	public void setSessionId(String sessionId) {
-		this.sessionId = sessionId;
+		this.sessionid = sessionId;
+	}
+
+	@Override
+	public String toString() {
+		return "UserCredentials [userid=" + userid + ", password=" + password + ", usertype=" + usertype
+				+ ", loginStatus=" + loginStatus + ", sessionId=" + sessionid + "]";
 	}
 	
 	

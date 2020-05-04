@@ -18,7 +18,7 @@ public interface VoterService {
 	
 	
 
-	public List<Candidate> getCandidatesById(String candidateId);
+//	public List<Candidate> getCandidatesById(String candidateId);
 
-	public List<Results> getResultsByElectionId();
+	//public List<Results> getResultsByElectionId();
 }

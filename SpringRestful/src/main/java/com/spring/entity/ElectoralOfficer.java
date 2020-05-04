@@ -2,30 +2,34 @@ package com.spring.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "evs_tbl_eo")
 public class ElectoralOfficer {
-	@Column(name = "electoralofficerId", length = 6)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "electoralofficerid", length = 6)
 	@Id
-	private String electoralofficerId;
+	private Long electoralofficerId;
+	
 	@Column(name = "constituency", length = 25)
 	private String constituency;
 	
 	public ElectoralOfficer() {
 		super();
 	}
-	public ElectoralOfficer(String electoralofficerId, String constituency) {
+	public ElectoralOfficer(Long electoralofficerId, String constituency) {
 		super();
 		this.electoralofficerId = electoralofficerId;
 		this.constituency = constituency;
 	}
-	public String getElectoralofficerId() {
+	public Long getElectoralofficerId() {
 		return electoralofficerId;
 	}
-	public void setElectoralofficerId(String electoralofficerId) {
+	public void setElectoralofficerId(Long electoralofficerId) {
 		this.electoralofficerId = electoralofficerId;
 	}
 	public String getConstituency() {

@@ -2,17 +2,18 @@ package com.spring.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "evs_tbl_party")
 public class PartyEntity {
-	
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	@Column(name="partyid")
-	private String partyid;
+	private Long partyid;
 	
 	@Column(name = "name")
 	private String name;
@@ -23,11 +24,11 @@ public class PartyEntity {
 	@Column(name = "symbol")
 	private String symbol;
 
-	public String getPartyid() {
+	public Long getPartyid() {
 		return partyid;
 	}
 
-	public void setPartyid(String partyid) {
+	public void setPartyid(Long partyid) {
 		this.partyid = partyid;
 	}
 
@@ -55,7 +56,7 @@ public class PartyEntity {
 		this.symbol = symbol;
 	}
 
-	public PartyEntity(String partyid, String name, String leader, String symbol) {
+	public PartyEntity(Long partyid, String name, String leader, String symbol) {
 		super();
 		this.partyid = partyid;
 		this.name = name;

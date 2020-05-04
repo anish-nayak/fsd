@@ -1,63 +1,63 @@
 package com.spring.json;
 
 public class Result {
-	private long serialno;
-	private String electionId;
-	private String candidateId;
-	private int voteCount;
-	private int resultStatus;
+	private Long serialno;
+	private Long electionid;
+	private Long candidateid;
+	private int votecount;
+	private int resultstatus;
 	public long getSerialno() {
 		return serialno;
 	}
 	public void setSerialno(long serialno) {
 		this.serialno = serialno;
 	}
-	public String getElectionId() {
-		return electionId;
+	public Long getElectionId() {
+		return electionid;
 	}
-	public void setElectionId(String electionId) {
-		this.electionId = electionId;
+	public void setElectionId(Long electionId) {
+		this.electionid = electionId;
 	}
-	public String getCandidateId() {
-		return candidateId;
+	public Long getCandidateId() {
+		return candidateid;
 	}
-	public void setCandidateId(String candidateId) {
-		this.candidateId = candidateId;
+	public void setCandidateId(Long candidateId) {
+		this.candidateid = candidateId;
 	}
 	public int getVoteCount() {
-		return voteCount;
+		return votecount;
 	}
 	public void setVoteCount(int voteCount) {
-		this.voteCount = voteCount;
+		this.votecount = voteCount;
 	}
 	public int getResultStatus() {
-		return resultStatus;
+		return resultstatus;
 	}
 	public void setResultStatus(int resultStatus) {
-		this.resultStatus = resultStatus;
+		this.resultstatus = resultStatus;
 	}
 	public Result() {
 		super();
 	}
-	public Result(long serialno, String electionId, String candidateId, int voteCount, int resultStatus) {
+	public Result(long serialno, Long electionId, Long candidateId, int voteCount, int resultStatus) {
 		super();
 		this.serialno = serialno;
-		this.electionId = electionId;
-		this.candidateId = candidateId;
-		this.voteCount = voteCount;
-		this.resultStatus = resultStatus;
+		this.electionid = electionId;
+		this.candidateid = candidateId;
+		this.votecount = voteCount;
+		this.resultstatus = resultStatus;
 	}
-	public Result(String electionId, String candidateId, int voteCount, int resultStatus) {
+	public Result(Long electionId, Long candidateId, int voteCount, int resultStatus) {
 		super();
-		this.electionId = electionId;
-		this.candidateId = candidateId;
-		this.voteCount = voteCount;
-		this.resultStatus = resultStatus;
+		this.electionid = electionId;
+		this.candidateid = candidateId;
+		this.votecount = voteCount;
+		this.resultstatus = resultStatus;
 	}
 	@Override
 	public String toString() {
-		return "Result [serialno=" + serialno + ", electionId=" + electionId + ", candidateId=" + candidateId
-				+ ", voteCount=" + voteCount + ", resultStatus=" + resultStatus + "]";
+		return "Result [serialno=" + serialno + ", electionId=" + electionid + ", candidateId=" + candidateid
+				+ ", voteCount=" + votecount + ", resultStatus=" + resultstatus + "]";
 	}
 
 }

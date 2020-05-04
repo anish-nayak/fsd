@@ -1,14 +1,14 @@
 package com.spring.json;
 
 public class Party {
-	private String partyid;
+	private Long partyid;
 	private String name;
 	private String leader;
 	private String symbol;
-	public String getPartyid() {
+	public Long getPartyid() {
 		return partyid;
 	}
-	public void setPartyid(String partyid) {
+	public void setPartyid(Long partyid) {
 		this.partyid = partyid;
 	}
 	public String getName() {
@@ -29,7 +29,7 @@ public class Party {
 	public void setSymbol(String symbol) {
 		this.symbol = symbol;
 	}
-	public Party(String partyid, String name, String leader, String symbol) {
+	public Party(Long partyid, String name, String leader, String symbol) {
 		super();
 		this.partyid = partyid;
 		this.name = name;

@@ -4,175 +4,178 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
 @Entity
 @Table(name = "evs_tbl_candidate")
 public class CandidateEntity {
 
-		@Column(name = "candidateid", length = 6)
-		@Id
-		private String candidateId;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "candidateid", length = 6)
+	@Id
+	private Long candidateid;
 
-		@Column(name = "name")
-		private String name;
+	@Column(name = "name")
+	private String name;
 
-		@Column(name = "electionid")
-		private String electionid;
-		
-		@Column(name = "partyid")
-		private String partyid;
-		
-		@Column(name = "district")
-		private String district;
+	@Column(name = "electionid")
+	private Long electionid;
 
-		@Column(name = "constituency")
-		private String constituency;
+	@Column(name = "partyid")
+	private Long partyid;
 
-		@Column(name = "date_of__birth")
-		private LocalDate dateOfBirth;
-		
-		@Column(name = "mobileNo")
-		private Long mobileNo;
-		
-		@Column(name = "address")
-		private String address;
-		
-		@Column(name = "emailId")
-		private String emailId;
+	@Column(name = "district")
+	private String district;
 
-		public CandidateEntity() {
-			super();
-		}
+	@Column(name = "constituency")
+	private String constituency;
 
-		public CandidateEntity(String name, String electionid, String partyid, String district, String constituency,
-				LocalDate dateOfBirth, Long mobileNo, String address, String emailId) {
-			super();
-			this.name = name;
-			this.electionid = electionid;
-			this.partyid = partyid;
-			this.district = district;
-			this.constituency = constituency;
-			this.dateOfBirth = dateOfBirth;
-			this.mobileNo = mobileNo;
-			this.address = address;
-			this.emailId = emailId;
-		}
+	@Column(name = "dateofbirth")
+	private LocalDate dateofbirth;
 
-		public CandidateEntity(String name, String district, String constituency, LocalDate dateOfBirth,
-				Long mobileNo, String address, String emailId) {
-			super();
-			this.name = name;
-			this.district = district;
-			this.constituency = constituency;
-			this.dateOfBirth = dateOfBirth;
-			this.mobileNo = mobileNo;
-			this.address = address;
-			this.emailId = emailId;
-		}
+	@Column(name = "mobileno")
+	private Long mobileno;
 
-		public CandidateEntity(String candidateId, String name, String electionid, String partyid, String district,
-				String constituency, LocalDate dateOfBirth, Long mobileNo, String address, String emailId) {
-			super();
-			this.candidateId = candidateId;
-			this.name = name;
-			this.electionid = electionid;
-			this.partyid = partyid;
-			this.district = district;
-			this.constituency = constituency;
-			this.dateOfBirth = dateOfBirth;
-			this.mobileNo = mobileNo;
-			this.address = address;
-			this.emailId = emailId;
-		}
+	@Column(name = "address")
+	private String address;
 
-		public String getCandidateId() {
-			return candidateId;
-		}
+	@Column(name = "emailid")
+	private String emailid;
 
-		public void setCandidateId(String candidateId) {
-			this.candidateId = candidateId;
-		}
+	public CandidateEntity() {
+		super();
+	}
 
-		public String getName() {
-			return name;
-		}
+	public CandidateEntity(String name, Long electionid, Long partyid, String district, String constituency,
+			LocalDate dateOfBirth, Long mobileNo, String address, String emailId) {
+		super();
+		this.name = name;
+		this.electionid = electionid;
+		this.partyid = partyid;
+		this.district = district;
+		this.constituency = constituency;
+		this.dateofbirth = dateOfBirth;
+		this.mobileno = mobileNo;
+		this.address = address;
+		this.emailid = emailId;
+	}
 
-		public void setName(String name) {
-			this.name = name;
-		}
+	public CandidateEntity(String name, String district, String constituency, LocalDate dateOfBirth, Long mobileNo,
+			String address, String emailId) {
+		super();
+		this.name = name;
+		this.district = district;
+		this.constituency = constituency;
+		this.dateofbirth = dateOfBirth;
+		this.mobileno = mobileNo;
+		this.address = address;
+		this.emailid = emailId;
+	}
 
-		public String getElectionid() {
-			return electionid;
-		}
+	public CandidateEntity(Long candidateId, String name, Long electionid, Long partyid, String district,
+			String constituency, LocalDate dateOfBirth, Long mobileNo, String address, String emailId) {
+		super();
+		this.candidateid = candidateId;
+		this.name = name;
+		this.electionid = electionid;
+		this.partyid = partyid;
+		this.district = district;
+		this.constituency = constituency;
+		this.dateofbirth = dateOfBirth;
+		this.mobileno = mobileNo;
+		this.address = address;
+		this.emailid = emailId;
+	}
 
-		public void setElectionid(String electionid) {
-			this.electionid = electionid;
-		}
+	public Long getCandidateId() {
+		return candidateid;
+	}
 
-		public String getPartyid() {
-			return partyid;
-		}
+	public void setCandidateId(Long candidateId) {
+		this.candidateid = candidateId;
+	}
 
-		public void setPartyid(String partyid) {
-			this.partyid = partyid;
-		}
+	public String getName() {
+		return name;
+	}
 
-		public String getDistrict() {
-			return district;
-		}
+	public void setName(String name) {
+		this.name = name;
+	}
 
-		public void setDistrict(String district) {
-			this.district = district;
-		}
+	public Long getElectionid() {
+		return electionid;
+	}
 
-		public String getConstituency() {
-			return constituency;
-		}
+	public void setElectionid(Long electionid) {
+		this.electionid = electionid;
+	}
 
-		public void setConstituency(String constituency) {
-			this.constituency = constituency;
-		}
+	public Long getPartyid() {
+		return partyid;
+	}
 
-		public LocalDate getDateOfBirth() {
-			return dateOfBirth;
-		}
+	public void setPartyid(Long partyid) {
+		this.partyid = partyid;
+	}
 
-		public void setDateOfBirth(LocalDate dateOfBirth) {
-			this.dateOfBirth = dateOfBirth;
-		}
+	public String getDistrict() {
+		return district;
+	}
 
-		public Long getMobileNo() {
-			return mobileNo;
-		}
+	public void setDistrict(String district) {
+		this.district = district;
+	}
 
-		public void setMobileNo(Long mobileNo) {
-			this.mobileNo = mobileNo;
-		}
+	public String getConstituency() {
+		return constituency;
+	}
 
-		public String getAddress() {
-			return address;
-		}
+	public void setConstituency(String constituency) {
+		this.constituency = constituency;
+	}
 
-		public void setAddress(String address) {
-			this.address = address;
-		}
+	public LocalDate getDateOfBirth() {
+		return dateofbirth;
+	}
 
-		public String getEmailId() {
-			return emailId;
-		}
+	public void setDateOfBirth(LocalDate dateOfBirth) {
+		this.dateofbirth = dateOfBirth;
+	}
 
-		public void setEmailId(String emailId) {
-			this.emailId = emailId;
-		}
+	public Long getMobileNo() {
+		return mobileno;
+	}
 
-		@Override
-		public String toString() {
-			return "CandidateEntity [candidateId=" + candidateId + ", name=" + name + ", electionid=" + electionid
-					+ ", partyid=" + partyid + ", district=" + district + ", constituency=" + constituency
-					+ ", dateOfBirth=" + dateOfBirth + ", mobileNo=" + mobileNo + ", address=" + address + ", emailId="
-					+ emailId + "]";
-		}
-		
+	public void setMobileNo(Long mobileNo) {
+		this.mobileno = mobileNo;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getEmailId() {
+		return emailid;
+	}
+
+	public void setEmailId(String emailId) {
+		this.emailid = emailId;
+	}
+
+	@Override
+	public String toString() {
+		return "CandidateEntity [candidateId=" + candidateid + ", name=" + name + ", electionid=" + electionid
+				+ ", partyid=" + partyid + ", district=" + district + ", constituency=" + constituency
+				+ ", dateOfBirth=" + dateofbirth + ", mobileNo=" + mobileno + ", address=" + address + ", emailId="
+				+ emailid + "]";
+	}
 
 }

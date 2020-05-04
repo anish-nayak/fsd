@@ -4,23 +4,23 @@ import java.time.LocalDate;
 
 public class User {
 
-	private String userid;
-	private String firstName;
-	private String lastName;
-	private LocalDate dateOfBirth;
+	private Long userid;
+	private String firstname;
+	private String lastname;
+	private LocalDate dateofbirth;
 	private String gender;
 	private String street;
 	private String location;
 	private String city;
 	private String state;
 
-	public User(String userid, String firstName, String lastName, LocalDate dateOfBirth, String gender, String street,
+	public User(Long userid, String firstName, String lastName, LocalDate dateOfBirth, String gender, String street,
 			String location, String city, String state) {
 		super();
 		this.userid = userid;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.dateOfBirth = dateOfBirth;
+		this.firstname = firstName;
+		this.lastname = lastName;
+		this.dateofbirth = dateOfBirth;
 		this.gender = gender;
 		this.street = street;
 		this.location = location;
@@ -28,36 +28,40 @@ public class User {
 		this.state = state;
 	}
 
-	public String getUserid() {
+	public User() {
+		super();
+	}
+
+	public Long getUserid() {
 		return userid;
 	}
 
-	public void setUserid(String userid) {
+	public void setUserid(Long userid) {
 		this.userid = userid;
 	}
 
 	public String getFirstName() {
-		return firstName;
+		return firstname;
 	}
 
 	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+		this.firstname = firstName;
 	}
 
 	public String getLastName() {
-		return lastName;
+		return lastname;
 	}
 
 	public void setLastName(String lastName) {
-		this.lastName = lastName;
+		this.lastname = lastName;
 	}
 
 	public LocalDate getDateOfBirth() {
-		return dateOfBirth;
+		return dateofbirth;
 	}
 
 	public void setDateOfBirth(LocalDate dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
+		this.dateofbirth = dateOfBirth;
 	}
 
 	public String getGender() {
@@ -98,6 +102,13 @@ public class User {
 
 	public void setState(String state) {
 		this.state = state;
+	}
+
+	@Override
+	public String toString() {
+		return "User [userid=" + userid + ", firstName=" + firstname + ", lastName=" + lastname + ", dateOfBirth="
+				+ dateofbirth + ", gender=" + gender + ", street=" + street + ", location=" + location + ", city="
+				+ city + ", state=" + state + "]";
 	}
 
 }

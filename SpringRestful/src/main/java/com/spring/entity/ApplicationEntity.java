@@ -2,15 +2,19 @@ package com.spring.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "evs_tbl_application")
 public class ApplicationEntity {
+	
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column( name = "userid", length= 6)
 	@Id
-	private String userid;
+	private Long userid;
 	
 	@Column( name = "constituency", length= 20)
 	private  String constituency;
@@ -22,31 +26,31 @@ public class ApplicationEntity {
 	private int approvedstatus;
 	
 	@Column( name = "voterid", length= 8)
-	private String voterId;
+	private Long voterid;
 	
 	public ApplicationEntity() {
 		super();
 	}
 	
-	public ApplicationEntity(String constituency, int approvedStatus, String voterId) {
+	public ApplicationEntity(String constituency, int approvedStatus, Long voterId) {
 		super();
 		this.constituency = constituency;
 		this.approvedstatus = approvedStatus;
-		this.voterId = voterId;
+		this.voterid = voterId;
 	}
 
-	public ApplicationEntity(String userId, String constituency, int passedStatus, int approvedStatus, String voterId) {
+	public ApplicationEntity(Long userId, String constituency, int passedStatus, int approvedStatus, Long voterId) {
 		super();
 		this.userid = userId;
 		this.constituency = constituency;
 		this.passedstatus = passedStatus;
 		this.approvedstatus = approvedStatus;
-		this.voterId = voterId;
+		this.voterid = voterId;
 	}
-	public String getUserId() {
+	public Long getUserId() {
 		return userid;
 	}
-	public void setUserId(String userId) {
+	public void setUserId(Long userId) {
 		this.userid = userId;
 	}
 	public String getConstituency() {
@@ -67,16 +71,16 @@ public class ApplicationEntity {
 	public void setApprovedStatus(int approvedStatus) {
 		this.approvedstatus = approvedStatus;
 	}
-	public String getVoterId() {
-		return voterId;
+	public Long getVoterId() {
+		return voterid;
 	}
-	public void setVoterId(String voterId) {
-		this.voterId = voterId;
+	public void setVoterId(Long voterId) {
+		this.voterid = voterId;
 	}
 	@Override
 	public String toString() {
 		return "Application [userId=" + userid + ", constituency=" + constituency + ", passedStatus=" + passedstatus
-				+ ", approvedStatus=" + approvedstatus + ", voterId=" + voterId + "]";
+				+ ", approvedStatus=" + approvedstatus + ", voterId=" + voterid + "]";
 	}
 	
 }

@@ -16,15 +16,13 @@ public class ElectionEntity {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "electionid")
 	@Id
-	// @GeneratedValue(generator = "system-uuid")
-//	@GenericGenerator(name = "system-uuid", strategy = "uuid")
 	private long electionid;
 
 	@Column(name = "name")
 	private String name;
 
-	@Column(name = "election_date")
-	private LocalDate electionDate;
+	@Column(name = "electiondate")
+	private LocalDate electiondate;
 
 	@Column(name = "district")
 	private String district;
@@ -32,8 +30,8 @@ public class ElectionEntity {
 	@Column(name = "constituency")
 	private String constituency;
 
-	@Column(name = "counting_date")
-	private LocalDate countingDate;
+	@Column(name = "countingdate")
+	private LocalDate countingdate;
 
 	public long getElectionid() {
 		return electionid;
@@ -52,11 +50,11 @@ public class ElectionEntity {
 	}
 
 	public LocalDate getElectionDate() {
-		return electionDate;
+		return electiondate;
 	}
 
 	public void setElectionDate(LocalDate electionDate) {
-		this.electionDate = electionDate;
+		this.electiondate = electionDate;
 	}
 
 	public String getDistrict() {
@@ -76,11 +74,11 @@ public class ElectionEntity {
 	}
 
 	public LocalDate getCountingDate() {
-		return countingDate;
+		return countingdate;
 	}
 
 	public void setCountingDate(LocalDate countingDate) {
-		this.countingDate = countingDate;
+		this.countingdate = countingDate;
 	}
 
 	public ElectionEntity(long electionid, String name, LocalDate electionDate, String district, String constituency,
@@ -88,24 +86,30 @@ public class ElectionEntity {
 		super();
 		this.electionid = electionid;
 		this.name = name;
-		this.electionDate = electionDate;
+		this.electiondate = electionDate;
 		this.district = district;
 		this.constituency = constituency;
-		this.countingDate = countingDate;
+		this.countingdate = countingDate;
 	}
 
 	public ElectionEntity(String name, LocalDate electionDate, String district, String constituency,
 			LocalDate countingDate) {
 		super();
 		this.name = name;
-		this.electionDate = electionDate;
+		this.electiondate = electionDate;
 		this.district = district;
 		this.constituency = constituency;
-		this.countingDate = countingDate;
+		this.countingdate = countingDate;
 	}
 
 	public ElectionEntity() {
 		super();
+	}
+
+	@Override
+	public String toString() {
+		return "ElectionEntity [electionid=" + electionid + ", name=" + name + ", electiondate=" + electiondate
+				+ ", district=" + district + ", constituency=" + constituency + ", countingdate=" + countingdate + "]";
 	}
 	
 	

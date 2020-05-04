@@ -3,16 +3,16 @@ package com.spring.json;
 import java.time.LocalDate;
 
 public class Candidate {
-	private String candidateId;
+	private Long candidateid;
 	private String name;
-	private String electionId;
-	private String partyId;
+	private Long electionid;
+	private Long partyid;
 	private String district;
 	private String constituency;
-	private LocalDate dateOfBirth;
-	private String mobileNo;
+	private LocalDate dateofbirth;
+	private String mobileno;
 	private String address;
-	private String emailId;
+	private String emailid;
 	
 	
 	public Candidate() {
@@ -20,29 +20,29 @@ public class Candidate {
 	}
 
 
-	public Candidate(String candidateId, String name, String electionId, String partyId, String district,
+	public Candidate(Long candidateId, String name, Long electionId, Long partyId, String district,
 			String constituency, LocalDate dateOfBirth, String mobileNo, String address, String emailId) {
 		super();
-		this.candidateId = candidateId;
+		this.candidateid = candidateId;
 		this.name = name;
-		this.electionId = electionId;
-		this.partyId = partyId;
+		this.electionid = electionId;
+		this.partyid = partyId;
 		this.district = district;
 		this.constituency = constituency;
-		this.dateOfBirth = dateOfBirth;
-		this.mobileNo = mobileNo;
+		this.dateofbirth = dateOfBirth;
+		this.mobileno = mobileNo;
 		this.address = address;
-		this.emailId = emailId;
+		this.emailid = emailId;
 	}
 
 
-	public String getCandidateId() {
-		return candidateId;
+	public Long getCandidateId() {
+		return candidateid;
 	}
 
 
-	public void setCandidateId(String candidateId) {
-		this.candidateId = candidateId;
+	public void setCandidateId(Long candidateId) {
+		this.candidateid = candidateId;
 	}
 
 
@@ -56,23 +56,23 @@ public class Candidate {
 	}
 
 
-	public String getElectionId() {
-		return electionId;
+	public Long getElectionId() {
+		return electionid;
 	}
 
 
-	public void setElectionId(String electionId) {
-		this.electionId = electionId;
+	public void setElectionId(Long electionId) {
+		this.electionid = electionId;
 	}
 
 
-	public String getPartyId() {
-		return partyId;
+	public Long getPartyId() {
+		return partyid;
 	}
 
 
-	public void setPartyId(String partyId) {
-		this.partyId = partyId;
+	public void setPartyId(Long partyId) {
+		this.partyid = partyId;
 	}
 
 
@@ -97,22 +97,22 @@ public class Candidate {
 
 
 	public LocalDate getDateOfBirth() {
-		return dateOfBirth;
+		return dateofbirth;
 	}
 
 
 	public void setDateOfBirth(LocalDate dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
+		this.dateofbirth = dateOfBirth;
 	}
 
 
 	public String getMobileNo() {
-		return mobileNo;
+		return mobileno;
 	}
 
 
 	public void setMobileNo(String mobileNo) {
-		this.mobileNo = mobileNo;
+		this.mobileno = mobileNo;
 	}
 
 
@@ -127,12 +127,20 @@ public class Candidate {
 
 
 	public String getEmailId() {
-		return emailId;
+		return emailid;
 	}
 
 
 	public void setEmailId(String emailId) {
-		this.emailId = emailId;
+		this.emailid = emailId;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Candidate [candidateid=" + candidateid + ", name=" + name + ", electionid=" + electionid + ", partyid="
+				+ partyid + ", district=" + district + ", constituency=" + constituency + ", dateofbirth=" + dateofbirth
+				+ ", mobileno=" + mobileno + ", address=" + address + ", emailid=" + emailid + "]";
 	}
 	
 }

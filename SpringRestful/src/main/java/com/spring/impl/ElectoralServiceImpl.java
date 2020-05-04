@@ -37,7 +37,7 @@ public class ElectoralServiceImpl implements ElectoralServices {
 		UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findBySessionId(sessionId);	
 		if (userCredentialsEntity != null) {
 
-			List<ApplicationEntity> pendingList = applicationrepo.findByApprovedstatus(1);
+			List<ApplicationEntity> pendingList = applicationrepo.findByApprovedStatus(1);
 			if (pendingList != null) {
 				return pendingList;
 			}
@@ -52,7 +52,7 @@ public class ElectoralServiceImpl implements ElectoralServices {
 
 	@Override
 	public Object generateVoterId(Application application, String userid,String sessionId) {
-			ApplicationEntity app = applicationrepo.findByUserid(userid);
+			ApplicationEntity app = applicationrepo.findByUserId(userid);
 			if(app != null) {
 				app.setVoterId(application.getVoterId());
 			    app.setApprovedStatus(app.getApprovedStatus());

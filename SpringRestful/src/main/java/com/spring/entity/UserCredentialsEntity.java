@@ -23,10 +23,10 @@ public class UserCredentialsEntity {
 	private String usertype;
 
 	@Column(name = "loginstatus")
-	private int loginStatus;
+	private int loginstatus;
 
-	@Column(name = "session_id")
-	private String sessionId;
+	@Column(name = "sessionid")
+	private String sessionid;
 
 	
 
@@ -67,25 +67,25 @@ public class UserCredentialsEntity {
 
 
 	public int getLoginStatus() {
-		return loginStatus;
+		return loginstatus;
 	}
 
 
 
 	public void setLoginStatus(int loginStatus) {
-		this.loginStatus = loginStatus;
+		this.loginstatus = loginStatus;
 	}
 
 
 
 	public String getSessionId() {
-		return sessionId;
+		return sessionid;
 	}
 
 
 
 	public void setSessionId(String sessionId) {
-		this.sessionId = sessionId;
+		this.sessionid = sessionId;
 	}
 
 
@@ -95,8 +95,8 @@ public class UserCredentialsEntity {
 		this.userid = userid;
 		this.password = password;
 		this.usertype = usertype;
-		this.loginStatus = loginStatus;
-		this.sessionId = sessionId;
+		this.loginstatus = loginStatus;
+		this.sessionid = sessionId;
 	}
 
 
@@ -104,5 +104,8 @@ public class UserCredentialsEntity {
 	public UserCredentialsEntity() {
 		super();
 	}
+
+
+
 
 }

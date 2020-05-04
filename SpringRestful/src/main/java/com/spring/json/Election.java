@@ -6,10 +6,10 @@ public class Election {
 
 	private long electionid;
 	private String name;
-	private LocalDate electionDate;
+	private LocalDate electiondate;
 	private String district;
 	private String constituency;
-	private LocalDate countingDate;
+	private LocalDate countingdate;
 
 	public Election() {
 		super();
@@ -20,10 +20,10 @@ public class Election {
 		super();
 		this.electionid = electionid;
 		this.name = name;
-		this.electionDate = electionDate;
+		this.electiondate = electionDate;
 		this.district = district;
 		this.constituency = constituency;
-		this.countingDate = countingDate;
+		this.countingdate = countingDate;
 	}
 
 	public long getElectionid() {
@@ -43,11 +43,11 @@ public class Election {
 	}
 
 	public LocalDate getElectionDate() {
-		return electionDate;
+		return electiondate;
 	}
 
 	public void setElectionDate(LocalDate electionDate) {
-		this.electionDate = electionDate;
+		this.electiondate = electionDate;
 	}
 
 	public String getDistrict() {
@@ -67,11 +67,17 @@ public class Election {
 	}
 
 	public LocalDate getCountingDate() {
-		return countingDate;
+		return countingdate;
 	}
 
 	public void setCountingDate(LocalDate countingDate) {
-		this.countingDate = countingDate;
+		this.countingdate = countingDate;
+	}
+
+	@Override
+	public String toString() {
+		return "Election [electionid=" + electionid + ", name=" + name + ", electiondate=" + electiondate
+				+ ", district=" + district + ", constituency=" + constituency + ", countingdate=" + countingdate + "]";
 	}
 
 }

@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -12,18 +13,18 @@ import javax.persistence.Table;
 @Table(name = "evs_tbl_user_profile")
 public class UserEntity {
 
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	@Column(name = "userid")
-	private String userid;
+	private Long userid;
 
-	@Column(name = "firstName")
+	@Column(name = "firstname")
 	private String firstName;
 
-	@Column(name = "lastName")
+	@Column(name = "lastname")
 	private String lastName;
 
-	@Column(name = "dateOfBirth")
+	@Column(name = "dateofbirth")
 	private LocalDate dateOfBirth;
 
 	@Column(name = "gender")
@@ -41,11 +42,15 @@ public class UserEntity {
 	@Column(name = "state")
 	private String state;
 
-	public String getUserid() {
+	public UserEntity() {
+		super();
+	}
+
+	public Long getUserid() {
 		return userid;
 	}
 
-	public void setUserid(String userid) {
+	public void setUserid(Long userid) {
 		this.userid = userid;
 	}
 
@@ -113,7 +118,7 @@ public class UserEntity {
 		this.state = state;
 	}
 
-	public UserEntity(String userid, String firstName, String lastName, LocalDate dateOfBirth, String gender,
+	public UserEntity(Long userid, String firstName, String lastName, LocalDate dateOfBirth, String gender,
 			String street, String location, String city, String state) {
 		super();
 		this.userid = userid;
