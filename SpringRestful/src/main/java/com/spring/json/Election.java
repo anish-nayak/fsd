@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class Election {
 
-	private String electionid;
+	private long electionid;
 	private String name;
 	private LocalDate electionDate;
 	private String district;
@@ -15,7 +15,7 @@ public class Election {
 		super();
 	}
 
-	public Election(String electionid, String name, LocalDate electionDate, String district, String constituency,
+	public Election(long electionid, String name, LocalDate electionDate, String district, String constituency,
 			LocalDate countingDate) {
 		super();
 		this.electionid = electionid;
@@ -26,11 +26,11 @@ public class Election {
 		this.countingDate = countingDate;
 	}
 
-	public String getElectionid() {
+	public long getElectionid() {
 		return electionid;
 	}
 
-	public void setElectionid(String electionid) {
+	public void setElectionid(long electionid) {
 		this.electionid = electionid;
 	}
 

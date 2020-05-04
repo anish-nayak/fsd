@@ -4,6 +4,8 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -11,11 +13,12 @@ import javax.persistence.Table;
 @Table(name = "evs_tbl_election")
 public class ElectionEntity {
 
-	@Column(name = "electionid", length = 6)
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "electionid")
 	@Id
-//	@GeneratedValue(generator = "system-uuid")
+	// @GeneratedValue(generator = "system-uuid")
 //	@GenericGenerator(name = "system-uuid", strategy = "uuid")
-	private String electionid;
+	private long electionid;
 
 	@Column(name = "name")
 	private String name;
@@ -32,11 +35,11 @@ public class ElectionEntity {
 	@Column(name = "counting_date")
 	private LocalDate countingDate;
 
-	public String getElectionid() {
+	public long getElectionid() {
 		return electionid;
 	}
 
-	public void setElectionid(String electionid) {
+	public void setElectionid(long electionid) {
 		this.electionid = electionid;
 	}
 
@@ -80,11 +83,7 @@ public class ElectionEntity {
 		this.countingDate = countingDate;
 	}
 
-	public ElectionEntity() {
-		super();
-	}
-
-	public ElectionEntity(String electionid, String name, LocalDate electionDate, String district, String constituency,
+	public ElectionEntity(long electionid, String name, LocalDate electionDate, String district, String constituency,
 			LocalDate countingDate) {
 		super();
 		this.electionid = electionid;
@@ -104,4 +103,10 @@ public class ElectionEntity {
 		this.constituency = constituency;
 		this.countingDate = countingDate;
 	}
+
+	public ElectionEntity() {
+		super();
+	}
+	
+	
 }

@@ -167,7 +167,7 @@ public class AdminServiceImpl implements AdminService {
 		BeanUtils.copyProperties(userCredentialsEntity, newUser);
 		String sessionId = null;
 		LoginResponse response = new LoginResponse();
-		if (newUser.getUserid().equals(user.getUserid()) && newUser.getPassword().equals(user.getPassword())
+		if (newUser.getUserid()==(user.getUserid()) && newUser.getPassword().equals(user.getPassword())
 				&& user.getUsertype().equals("1") && newUser.getUsertype().equals("1")) {
 			sessionId = generateRandomString(6);
 			userCredentialsEntity.setSessionId(sessionId);
@@ -177,7 +177,7 @@ public class AdminServiceImpl implements AdminService {
 			response.setResult("Success");
 			response.setSessionId(sessionId);
 
-		} else if (newUser.getUserid().equals(user.getUserid()) && newUser.getPassword().equals(user.getPassword())
+		} else if (newUser.getUserid()==(user.getUserid()) && newUser.getPassword().equals(user.getPassword())
 				&& user.getUsertype().equals("2")  && newUser.getUsertype().equals("2")) {
 			sessionId = generateRandomString(6);
 			userCredentialsEntity.setSessionId(sessionId);
@@ -187,7 +187,7 @@ public class AdminServiceImpl implements AdminService {
 			response.setResult("Success");
 			response.setSessionId(sessionId);
 
-		}else if (newUser.getUserid().equals(user.getUserid()) && newUser.getPassword().equals(user.getPassword())
+		}else if (newUser.getUserid()==(user.getUserid()) && newUser.getPassword().equals(user.getPassword())
 				&& user.getUsertype().equals("3")  && newUser.getUsertype().equals("3")) {
 			sessionId = generateRandomString(6);
 			userCredentialsEntity.setSessionId(sessionId);

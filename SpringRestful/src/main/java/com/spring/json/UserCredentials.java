@@ -2,7 +2,7 @@ package com.spring.json;
 
 public class UserCredentials {
 
-	private String userid;
+	private long userid;
 	private String password;
 	private String usertype;
 	private int loginStatus;
@@ -12,7 +12,7 @@ public class UserCredentials {
 		super();
 	}
 
-	public UserCredentials(String userid, String password, String usertype, int loginStatus, String sessionId) {
+	public UserCredentials(long userid, String password, String usertype, int loginStatus, String sessionId) {
 		super();
 		this.userid = userid;
 		this.password = password;
@@ -21,11 +21,11 @@ public class UserCredentials {
 		this.sessionId = sessionId;
 	}
 
-	public String getUserid() {
+	public long getUserid() {
 		return userid;
 	}
 
-	public void setUserid(String userid) {
+	public void setUserid(long userid) {
 		this.userid = userid;
 	}
 
@@ -60,5 +60,9 @@ public class UserCredentials {
 	public void setSessionId(String sessionId) {
 		this.sessionId = sessionId;
 	}
+	
+	
+
+	
 
 }
