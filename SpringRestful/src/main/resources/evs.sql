@@ -23,7 +23,7 @@ CREATE TABLE `evs_tbl_election` (
 CREATE TABLE `evs_tbl_eo` (
   `electoralofficerid` int(11) NOT NULL DEFAULT '0',
   `constituency` varchar(25) NOT NULL DEFAULT '',
-  PRIMARY KEY (`electoralofficeid`)
+  PRIMARY KEY (`electoralofficerid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 #
@@ -52,7 +52,7 @@ CREATE TABLE `evs_tbl_result` (
   PRIMARY KEY (`serialno`),
   KEY `evs_tbl_result_fk` (`candidateid`),
   KEY `evs_tbl_result_fk_1` (`electionid`),
-  CONSTRAINT `evs_tbl_result_fk` FOREIGN KEY (`electionid`) REFERENCES `evs_tbl_eo` (`electoralofficeid`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `evs_tbl_result_fk` FOREIGN KEY (`electionid`) REFERENCES `evs_tbl_eo` (`electoralofficerid`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 #
@@ -125,7 +125,6 @@ CREATE TABLE `evs_tbl_voter` (
   `pincode` varchar(10) NOT NULL,
   `mobileno` varchar(10) NOT NULL,
   `emailid` varchar(30) NOT NULL,
-  `usertype` int(10) unsigned NOT NULL,
   PRIMARY KEY (`userid`),
   UNIQUE KEY `userid` (`userid`),
   CONSTRAINT `evs_tbl_voter_fk_2` FOREIGN KEY (`userid`) REFERENCES `evs_tbl_application` (`userid`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -163,7 +162,7 @@ CREATE TABLE `evs_tbl_candidate` (
   `mobileno` varchar(10) NOT NULL DEFAULT '',
   `address` varchar(50) NOT NULL DEFAULT '',
   `emailid` varchar(20) NOT NULL DEFAULT '',
-  `constituency` varchar(255) DEFAULT NULL,
+
   PRIMARY KEY (`candidateid`),
   KEY `evs_tbl_candidate_fk` (`electionid`),
   KEY `evs_tbl_candidate_fk_1` (`partyid`),
