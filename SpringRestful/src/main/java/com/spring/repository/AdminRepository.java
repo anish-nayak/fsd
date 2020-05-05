@@ -12,7 +12,7 @@ import com.spring.entity.ElectionEntity;
 
 
 @Repository
-public interface AdminRepository extends JpaRepository<ElectionEntity, String> {
+public interface AdminRepository extends JpaRepository<ElectionEntity, Long> {
 
 	List<ElectionEntity> findByElectiondate(LocalDate electionDate);
 

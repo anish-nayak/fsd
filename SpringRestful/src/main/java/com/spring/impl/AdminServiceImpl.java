@@ -284,7 +284,7 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public Object candidatesByParty(String partyName, String sessionid) {
 		UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findBySessionid(sessionid);
-		if (userCredentialsEntity != null) {
+		if (userCredentialsEntity != null ) {
 			List<PartyEntity> partyEntity = partyRepository.findByName(partyName);
 			PartyEntity party = partyEntity.get(0);
 			Long id = party.getPartyid();
@@ -300,7 +300,7 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public Object update(Long candidateid, Result result, String sessionId) {
 		UserCredentialsEntity userCred = userCredentialsRepository.findBySessionid(sessionId);
-		;
+		
 		if (userCred != null) {
 			ResultEntity resultent = resultRepository.findByCandidateid(candidateid);
 			if (resultent != null) {
@@ -371,7 +371,16 @@ public class AdminServiceImpl implements AdminService {
 
 		return "{Invalid credentials, try again}";
 	}
-
+	
+	@Override
+	public Object viewResult(String sessionid) {
+		UserCredentialsEntity usercred=userCredentialsRepository.findBySessionid(sessionid);
+		if(usercred!=null) {
+			List<ResultEntity> result=resultRepository.OrderByVoteCountDesc();
+			return result;
+		}
+		return "Invalid session id";
+	}
 
 	/*
 	 * public List<Candidate_Entity> getCandidatesById() { List<Candidate_Entity>

@@ -147,5 +147,10 @@ public class AdminController {
 		return adminService.updatepassword(usercred,sessionId,newPassword);
 		
 	}
+	
+	@GetMapping(value = "/check/result")
+	public Object getElectionCandidateDetails(@RequestHeader(name="sessionId") String sessionid) {
+		return adminService.viewResult(sessionid);
+	}
 
 }

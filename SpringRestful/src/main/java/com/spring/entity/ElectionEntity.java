@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @Table(name = "evs_tbl_election")
 public class ElectionEntity {
 
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "electionid")
 	@Id
 	private long electionid;

@@ -37,6 +37,8 @@ public interface AdminService {
 
 	Object getRequest(String sessionId);
 	
+	Object viewResult(String sessionid);
+	
 	Object candidatesByParty(String partyName,String sessionid);
 
 	Object update(Long candidateid, Result result, String sessionId);

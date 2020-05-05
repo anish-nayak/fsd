@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.spring.entity.ApplicationEntity;
 
 
-public interface ApplicationRepository extends JpaRepository<ApplicationEntity, String> {
+public interface ApplicationRepository extends JpaRepository<ApplicationEntity, Long> {
        
 		ApplicationEntity findByUserid(Long userid);
 		

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.spring.entity.PartyEntity;
 
 @Repository
-public interface PartyRepository extends JpaRepository<PartyEntity, String> {
+public interface PartyRepository extends JpaRepository<PartyEntity, Long> {
 	List<PartyEntity> findByName(String name);
 
 }

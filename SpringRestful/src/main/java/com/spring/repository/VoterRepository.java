@@ -8,7 +8,7 @@ import com.spring.entity.ElectionEntity;
 import com.spring.entity.UserEntity;
 import com.spring.entity.VoterEntity;
 
-public interface VoterRepository extends JpaRepository<VoterEntity, String>{
+public interface VoterRepository extends JpaRepository<VoterEntity, Long>{
 
 	
 
