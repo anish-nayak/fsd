@@ -70,6 +70,22 @@ public class AdminServiceImpl implements AdminService {
 		}
 
 	}
+	@Override
+	public Object addParty(PartyEntity party, String sessionId) {
+		UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findBySessionid(sessionId);
+		if (userCredentialsEntity != null) {
+			String id = generateRandomString(6);
+			
+			partyRepository.save(party);
+			return party;
+		} else {
+			LoginResponse loginResponse = new LoginResponse();
+			loginResponse.setMessage("INVALID SESSION ID");
+			loginResponse.setResult("unsucessfull");
+			loginResponse.setSessionId(null);
+			return loginResponse;
+		}
+	}
 
 	public Object getElectionDetails(String sessionId) {
 		UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findBySessionid(sessionId);
@@ -123,22 +139,7 @@ public class AdminServiceImpl implements AdminService {
 		}
 	}
 
-	@Override
-	public Object addParty(PartyEntity party, String sessionId) {
-		UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findBySessionid(sessionId);
-		if (userCredentialsEntity != null) {
-			Long id = random.nextLong();
-			party.setPartyid(id);
-			partyRepository.save(party);
-			return party;
-		} else {
-			LoginResponse loginResponse = new LoginResponse();
-			loginResponse.setMessage("INVALID SESSION ID");
-			loginResponse.setResult("unsucessfull");
-			loginResponse.setSessionId(null);
-			return loginResponse;
-		}
-	}
+
 
 	@Override
 	public LoginResponse adminLogin(UserCredentials user) {

@@ -10,9 +10,10 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "evs_tbl_party")
 public class PartyEntity {
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "partyid")
 	@Id
-	@Column(name="partyid")
 	private Long partyid;
 	
 	@Column(name = "name")
