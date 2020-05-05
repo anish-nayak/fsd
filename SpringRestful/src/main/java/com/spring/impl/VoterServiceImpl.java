@@ -122,7 +122,7 @@ public Object statusVoter(String sessionid,Long userid) {
 			UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findBySessionid(sessionid);
 			if (userCredentialsEntity != null) {
 				List<ElectionEntity> electionDateList = new ArrayList<>();
-				electionRepository.findByElectiondateGreaterThanEqual(localDate).forEach(electionDateList::add);
+				electionRepository.findByElectiondate(localDate).forEach(electionDateList::add);
 				return electionDateList;
 			} 
 			else {

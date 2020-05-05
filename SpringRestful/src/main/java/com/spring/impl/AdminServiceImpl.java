@@ -347,8 +347,7 @@ public class AdminServiceImpl implements AdminService {
 	public Object getAllElectionFromElectionDate(LocalDate date, String sessionId) {
 		UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findBySessionid(sessionId);
 		if (userCredentialsEntity != null) {
-			List<ElectionEntity> electionDateList = new ArrayList<>();
-			adminRepository.findByElectiondateGreaterThanEqual(date).forEach(electionDateList::add);
+			List<ElectionEntity> electionDateList = adminRepository.findByElectiondate(date);
 			return electionDateList;
 		} else {
 			LoginResponse loginResponse = new LoginResponse();

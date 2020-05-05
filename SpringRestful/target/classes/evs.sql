@@ -1,3 +1,4 @@
+﻿
 CREATE DATABASE `evs` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `evs`;
 
@@ -126,7 +127,6 @@ CREATE TABLE `evs_tbl_voter` (
   `emailid` varchar(30) NOT NULL,
   PRIMARY KEY (`userid`),
   UNIQUE KEY `userid` (`userid`),
- 
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 #
