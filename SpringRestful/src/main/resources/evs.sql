@@ -127,9 +127,6 @@ CREATE TABLE `evs_tbl_voter` (
   `emailid` varchar(30) NOT NULL,
   PRIMARY KEY (`userid`),
   UNIQUE KEY `userid` (`userid`),
-  CONSTRAINT `evs_tbl_voter_fk_2` FOREIGN KEY (`userid`) REFERENCES `evs_tbl_application` (`userid`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `evs_tbl_voter_fk` FOREIGN KEY (`userid`) REFERENCES `evs_tbl_user_credentials` (`userid`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `evs_tbl_voter_fk_1` FOREIGN KEY (`userid`) REFERENCES `evs_tbl_user_profile` (`userid`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 #
