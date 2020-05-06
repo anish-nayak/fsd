@@ -292,7 +292,11 @@ public class AdminServiceImpl implements AdminService {
 			List<String> candidate = candidateList.stream().map(CandidateEntity::getName).collect(Collectors.toList());
 			return candidate;
 		} else {
-			return "Invalid Session id";
+			LoginResponse loginResponse = new LoginResponse();
+			loginResponse.setMessage("INVALID SESSION ID");
+			loginResponse.setResult("unsucessfull");
+			loginResponse.setSessionId(null);
+			return loginResponse;
 		}
 
 	}
