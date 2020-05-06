@@ -12,5 +12,5 @@ import com.spring.entity.ResultEntity;
 public interface ResultRepository extends JpaRepository<ResultEntity, Long> {
 	ResultEntity findByCandidateid(Long candidateid);
 
-	List<ResultEntity> OrderByVoteCountDesc();
+	List<ResultEntity> OrderByVotecountDesc();
 }

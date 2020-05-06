@@ -376,7 +376,7 @@ public class AdminServiceImpl implements AdminService {
 	public Object viewResult(String sessionid) {
 		UserCredentialsEntity usercred=userCredentialsRepository.findBySessionid(sessionid);
 		if(usercred!=null) {
-			List<ResultEntity> result=resultRepository.OrderByVoteCountDesc();
+			List<ResultEntity> result=resultRepository.OrderByVotecountDesc();
 			return result;
 		}
 		return "Invalid session id";
