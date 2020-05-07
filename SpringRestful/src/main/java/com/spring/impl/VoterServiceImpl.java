@@ -58,23 +58,33 @@ public class VoterServiceImpl implements VoterService{
 		return stringBuilder.toString();
 	}
 
-	@Override
 	public Object registerVoter(Voter voter) {
-		VoterEntity voten=new VoterEntity();
-		voten.setUserid(voter.getUserid());
-		voten.setFirstName(voter.getFirstName());
-		voten.setLastName(voter.getLastName());
-		voten.setDateOfBirth(voter.getDateOfBirth());
-		voten.setGender(voter.getGender());
-		voten.setLocation(voter.getLocation());
-		voten.setStreet(voter.getStreet());
-		voten.setCity(voter.getCity());
-		voten.setState(voter.getState());
-		voten.setPassword(voter.getPassword());
-		voten.setLoginStatus(voter.getLoginStatus());
-		voten.setUsertype(voter.getUsertype());
-		voterRepository.save(voten);
-		return "Voter registers success";
+System.out.println(voter);
+		UserCredentialsEntity userCredentialsEntity=new UserCredentialsEntity();
+		UserEntity userEntity=new UserEntity();
+			
+			userEntity.setFirstName(voter.getFirstName());
+			userEntity.setLastName(voter.getLastName());
+			userEntity.setDateOfBirth(voter.getDateOfBirth());
+			userEntity.setGender(voter.getGender());
+			userEntity.setLocation(voter.getLocation());
+			userEntity.setStreet(voter.getStreet());
+			userEntity.setCity(voter.getCity());
+			userEntity.setState(voter.getState());
+			userEntity.setEmailid(voter.getEmailid());
+			userEntity.setMobileno(voter.getMobileno());
+			userEntity.setPincode(voter.getPincode());
+			
+
+			
+			userCredentialsEntity.setPassword(voter.getPassword());
+			userCredentialsEntity.setUsertype("3");
+			
+			userCredentialsRepository.save(userCredentialsEntity);
+			userRepository.save(userEntity);
+			String msg=new String ("Successfully added voter");
+			return msg+userEntity;
+
 	}
 
 	@Override

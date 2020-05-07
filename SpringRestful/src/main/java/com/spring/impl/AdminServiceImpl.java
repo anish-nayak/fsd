@@ -143,42 +143,47 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public LoginResponse adminLogin(UserCredentials user) {
+		System.out.println(user);
 		UserCredentials newUser = new UserCredentials();
-		UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findById(user.getUserid()).get();
-		BeanUtils.copyProperties(userCredentialsEntity, newUser);
-		String sessionId = null;
 		LoginResponse response = new LoginResponse();
-		if (newUser.getUserid() == (user.getUserid()) && newUser.getPassword().equals(user.getPassword())
-				&& user.getUsertype().equals("1") && newUser.getUsertype().equals("1")) {
-			sessionId = generateRandomString(6);
-			userCredentialsEntity.setSessionId(sessionId);
-			userCredentialsEntity.setLoginStatus(1);
-			userCredentialsRepository.save(userCredentialsEntity);
-			response.setMessage("Login Successful-admin");
-			response.setResult("Success");
-			response.setSessionId(sessionId);
 
-		} else if (newUser.getUserid() == (user.getUserid()) && newUser.getPassword().equals(user.getPassword())
-				&& user.getUsertype().equals("2") && newUser.getUsertype().equals("2")) {
-			sessionId = generateRandomString(6);
-			userCredentialsEntity.setSessionId(sessionId);
-			userCredentialsEntity.setLoginStatus(1);
-			userCredentialsRepository.save(userCredentialsEntity);
-			response.setMessage("Login Successful-electoral");
-			response.setResult("Success");
-			response.setSessionId(sessionId);
+		if(userCredentialsRepository.findById(user.getUserid()).isPresent()) {
+			UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findById(user.getUserid()).get();
+			BeanUtils.copyProperties(userCredentialsEntity, newUser);
+			String sessionId = null;
+			if (newUser.getUserid()==(user.getUserid()) && newUser.getPassword().equals(user.getPassword())
+					&& user.getUsertype().equals("1") && newUser.getUsertype().equals("1")) {
+				sessionId = generateRandomString(6);
+				userCredentialsEntity.setSessionId(sessionId);
+				userCredentialsEntity.setLoginStatus(1);
+				userCredentialsRepository.save(userCredentialsEntity);
+				response.setMessage("Login Successful-admin");
+				response.setResult("Success");
+				response.setSessionId(sessionId);
 
-		} else if (newUser.getUserid() == (user.getUserid()) && newUser.getPassword().equals(user.getPassword())
-				&& user.getUsertype().equals("3") && newUser.getUsertype().equals("3")) {
-			sessionId = generateRandomString(6);
-			userCredentialsEntity.setSessionId(sessionId);
-			userCredentialsEntity.setLoginStatus(1);
-			userCredentialsRepository.save(userCredentialsEntity);
-			response.setMessage("Login Successful-voter");
-			response.setResult("Success");
-			response.setSessionId(sessionId);
+			} else if (newUser.getUserid()==(user.getUserid()) && newUser.getPassword().equals(user.getPassword())
+					&& user.getUsertype().equals("2")  && newUser.getUsertype().equals("2")) {
+				sessionId = generateRandomString(6);
+				userCredentialsEntity.setSessionId(sessionId);
+				userCredentialsEntity.setLoginStatus(1);
+				userCredentialsRepository.save(userCredentialsEntity);
+				response.setMessage("Login Successful-electoral");
+				response.setResult("Success");
+				response.setSessionId(sessionId);
 
-		} else {
+			}else if (newUser.getUserid()==(user.getUserid()) && newUser.getPassword().equals(user.getPassword())
+					&& user.getUsertype().equals("3")  && newUser.getUsertype().equals("3")) {
+				sessionId = generateRandomString(6);
+				userCredentialsEntity.setSessionId(sessionId);
+				userCredentialsEntity.setLoginStatus(1);
+				userCredentialsRepository.save(userCredentialsEntity);
+				response.setMessage("Login Successful-voter");
+				response.setResult("Success");
+				response.setSessionId(sessionId);
+
+			}
+		}
+		else {
 			response.setMessage("Login UnSuccessful");
 			response.setResult("Failure");
 			response.setSessionId(null);
