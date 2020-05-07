@@ -13,24 +13,13 @@ public class User {
 	private String location;
 	private String city;
 	private String state;
+	private String emailid;
+	private String mobileno;
+	private Long pincode;
 
-	public User(Long userid, String firstName, String lastName, LocalDate dateOfBirth, String gender, String street,
-			String location, String city, String state) {
-		super();
-		this.userid = userid;
-		this.firstname = firstName;
-		this.lastname = lastName;
-		this.dateofbirth = dateOfBirth;
-		this.gender = gender;
-		this.street = street;
-		this.location = location;
-		this.city = city;
-		this.state = state;
-	}
+	
 
-	public User() {
-		super();
-	}
+	
 
 	public Long getUserid() {
 		return userid;
@@ -104,11 +93,77 @@ public class User {
 		this.state = state;
 	}
 
+	public String getEmailid() {
+		return emailid;
+	}
+
+	public void setEmailid(String emailid) {
+		this.emailid = emailid;
+	}
+
+	public String getMobileno() {
+		return mobileno;
+	}
+
+	public void setMobileno(String mobileno) {
+		this.mobileno = mobileno;
+	}
+
+	public Long getPincode() {
+		return pincode;
+	}
+
+	public void setPincode(Long pincode) {
+		this.pincode = pincode;
+	}
+
+	public User(Long userid, String firstname, String lastname, LocalDate dateofbirth, String gender, String street,
+			String location, String city, String state, String emailid, String mobileno, Long pincode) {
+		super();
+		this.userid = userid;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.dateofbirth = dateofbirth;
+		this.gender = gender;
+		this.street = street;
+		this.location = location;
+		this.city = city;
+		this.state = state;
+		this.emailid = emailid;
+		this.mobileno = mobileno;
+		this.pincode = pincode;
+	}
+
+	public User(String firstname, String lastname, LocalDate dateofbirth, String gender, String street, String location,
+			String city, String state, String emailid, String mobileno, Long pincode) {
+		super();
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.dateofbirth = dateofbirth;
+		this.gender = gender;
+		this.street = street;
+		this.location = location;
+		this.city = city;
+		this.state = state;
+		this.emailid = emailid;
+		this.mobileno = mobileno;
+		this.pincode = pincode;
+	}
+
+	public User() {
+		super();
+	}
+
 	@Override
 	public String toString() {
-		return "User [userid=" + userid + ", firstName=" + firstname + ", lastName=" + lastname + ", dateOfBirth="
+		return "User [userid=" + userid + ", firstname=" + firstname + ", lastname=" + lastname + ", dateofbirth="
 				+ dateofbirth + ", gender=" + gender + ", street=" + street + ", location=" + location + ", city="
-				+ city + ", state=" + state + "]";
+				+ city + ", state=" + state + ", emailid=" + emailid + ", mobileno=" + mobileno + ", pincode=" + pincode
+				+ "]";
 	}
+
+	
+
+	
 
 }
