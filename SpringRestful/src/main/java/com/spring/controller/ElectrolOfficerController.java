@@ -3,6 +3,7 @@ package com.spring.controller;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +21,7 @@ import com.spring.service.ElectoralServices;
 
 @RestController
 @RequestMapping("/evs")
+@CrossOrigin(origins="*")
 public class ElectrolOfficerController {
 
 	
@@ -39,13 +41,12 @@ public class ElectrolOfficerController {
 	}
 	
 	@PostMapping(value="/application/approved/update/{userid}",produces=MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE)
-	public Object updateRequest2(@RequestBody Application
-			application,ApplicationEntity 
-			applicationEntity ,@RequestHeader(name = "sessionId") String sessionId,
+	public Object updateRequest2(@RequestBody Application application,ApplicationEntity applicationEntity
+			,@RequestHeader(name = "sessionId") String sessionId,
 			@PathVariable(name="userid") Long userid
 			){
        BeanUtils.copyProperties(application,applicationEntity);
-		return eoService.generateVoterId(application,userid,sessionId);
+		return eoService.generateVoterId(applicationEntity,userid,sessionId);
 	}
 	@DeleteMapping(value= "/application/approved/reject/{userid}")
 	public Object rejectRequest(@PathVariable(name= "userid")Long userid, @RequestHeader(name = "sessionId") String sessionId){
