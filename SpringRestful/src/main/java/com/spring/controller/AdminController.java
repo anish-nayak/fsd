@@ -151,7 +151,7 @@ public class AdminController {
 	}
 	
 	@GetMapping(value = "/check/result")
-	public Object getElectionCandidateDetails(@RequestHeader(name="sessionId") String sessionid) {
+	public Object results(@RequestHeader(name="sessionId") String sessionid) {
 		return adminService.viewResult(sessionid);
 	}
 

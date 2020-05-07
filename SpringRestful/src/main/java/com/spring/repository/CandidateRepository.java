@@ -10,5 +10,7 @@ import com.spring.entity.CandidateEntity;
 public interface CandidateRepository extends JpaRepository<CandidateEntity, Long> {
 	List<CandidateEntity> findByPartyid(Long id);
 
-	List<CandidateEntity> findByCandidateid(Long candidateid);	
-}
+	List<CandidateEntity> findByCandidateid(Long candidateid);
+
+	List<CandidateEntity> findByElectionId(String electionid);	
+	}

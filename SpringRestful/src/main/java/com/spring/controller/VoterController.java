@@ -53,5 +53,14 @@ public class VoterController {
 
 		return voterService.viewSchedule(sessionid);
 	}
+	@GetMapping(value = "/voter/candidate/{electionId}")
+	public Object getElectionCandidateDetails(@RequestHeader(name="sessionId") String sessionid,@PathVariable(name="electioId") String electionid) {
+		return voterService.getCandidateByElectionid(sessionid,electionid);
+	}
+	
+	@GetMapping(value = "/election/result")
+	public Object getElectionCandidateDetails(@RequestHeader(name="sessionId") String sessionid) {
+		return voterService.viewResult(sessionid);
+	}
 	
 }

@@ -10,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.spring.entity.ApplicationEntity;
+import com.spring.entity.CandidateEntity;
 import com.spring.entity.ElectionEntity;
+import com.spring.entity.ResultEntity;
 import com.spring.entity.UserCredentialsEntity;
 import com.spring.entity.UserEntity;
 import com.spring.entity.VoterEntity;
@@ -21,6 +23,8 @@ import com.spring.json.UserCredentials;
 import com.spring.json.Voter;
 import com.spring.repository.AdminRepository;
 import com.spring.repository.ApplicationRepository;
+import com.spring.repository.CandidateRepository;
+import com.spring.repository.ResultRepository;
 import com.spring.repository.UserCredentialsRepository;
 import com.spring.repository.UserRepository;
 import com.spring.repository.VoterRepository;
@@ -41,7 +45,13 @@ public class VoterServiceImpl implements VoterService{
 	private VoterRepository voterRepository;
 	
 	@Autowired
+	private CandidateRepository candidateRepository;
+	
+	@Autowired
 	 	private AdminRepository electionRepository;
+	
+	@Autowired
+ 	private ResultRepository resultRepository;
 
 	private final Random random = new SecureRandom();
 	private final String ALPHABET = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
@@ -142,6 +152,26 @@ public Object statusVoter(String sessionid,Long userid) {
 				loginResponse.setSessionId(null);
 				return loginResponse;
 			}
+	}
+	
+	@Override
+	public Object getCandidateByElectionid(String sessionid, String electionid) {
+		UserCredentialsEntity usercred=userCredentialsRepository.findBySessionid(sessionid);
+		if(usercred!=null) {
+			List<CandidateEntity> candidateList=candidateRepository.findByElectionId(electionid);
+			return candidateList;	
+		}
+		return "Invalid session id";
+	}
+
+	@Override
+	public Object viewResult(String sessionid) {
+		UserCredentialsEntity usercred=userCredentialsRepository.findBySessionid(sessionid);
+		if(usercred!=null) {
+			List<ResultEntity> result=resultRepository.OrderByVotecountDesc();
+			return result;
+		}
+		return "Invalid session id";
 	}
 		
 	}

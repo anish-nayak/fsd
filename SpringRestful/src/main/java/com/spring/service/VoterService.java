@@ -25,5 +25,9 @@ public interface VoterService {
 
 	Object viewSchedule(String sessionid);
 	
+	Object getCandidateByElectionid(String sessionid, String electionid);	
+
+	Object viewResult(String sessionid);
+	
 
 }
