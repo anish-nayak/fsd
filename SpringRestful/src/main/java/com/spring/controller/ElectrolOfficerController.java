@@ -21,38 +21,30 @@ import com.spring.service.ElectoralServices;
 
 @RestController
 @RequestMapping("/evs")
-@CrossOrigin(origins="*")
+@CrossOrigin(origins = "*")
 public class ElectrolOfficerController {
 
-	
 	@Autowired
 	private ElectoralServices eoService;
-	
-	
-	
+
 	private String sessionId = null;
-	
 
-
-	
-	@GetMapping(value="/application/approved/request")
-	public Object getRequest1(@RequestHeader(name = "sessionId") String sessionId){
+	@GetMapping(value = "/application/approved/request")
+	public Object getRequest1(@RequestHeader(name = "sessionId") String sessionId) {
 		return eoService.getApprovedUser(sessionId);
 	}
-	
-	@PostMapping(value="/application/approved/update/{userid}",produces=MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE)
-	public Object updateRequest2(@RequestBody Application application,ApplicationEntity applicationEntity
-			,@RequestHeader(name = "sessionId") String sessionId,
-			@PathVariable(name="userid") Long userid
-			){
-       BeanUtils.copyProperties(application,applicationEntity);
-		return eoService.generateVoterId(applicationEntity,userid,sessionId);
-	}
-	@DeleteMapping(value= "/application/approved/reject/{userid}")
-	public Object rejectRequest(@PathVariable(name= "userid")Long userid, @RequestHeader(name = "sessionId") String sessionId){
-		return eoService.deleteByUserid(userid, sessionId);
+
+	@PostMapping(value = "/application/approved/update/{userid}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public Object updateRequest2(@RequestBody Application application, ApplicationEntity applicationEntity,
+			@RequestHeader(name = "sessionId") String sessionId, @PathVariable(name = "userid") Long userid) {
+		BeanUtils.copyProperties(application, applicationEntity);
+		return eoService.generateVoterId(applicationEntity, userid, sessionId);
 	}
 
-	
+	@DeleteMapping(value = "/application/approved/reject/{userid}")
+	public Object rejectRequest(@PathVariable(name = "userid") Long userid,
+			@RequestHeader(name = "sessionId") String sessionId) {
+		return eoService.deleteByUserid(userid, sessionId);
+	}
 
 }

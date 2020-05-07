@@ -6,12 +6,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.spring.entity.ApplicationEntity;
 
-
 public interface ApplicationRepository extends JpaRepository<ApplicationEntity, Long> {
-       
-		ApplicationEntity findByUserid(Long userid);
-		
-		List<ApplicationEntity> findByApprovedstatus(int approvedstatus);
 
-		ApplicationEntity findByPassedstatus(int i);
+	ApplicationEntity findByUserid(Long userid);
+
+	List<ApplicationEntity> findByApprovedstatus(int approvedstatus);
+
+	ApplicationEntity findByPassedstatus(int i);
 }
