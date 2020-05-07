@@ -12,7 +12,8 @@ CREATE TABLE `evs_tbl_election` (
   `district` varchar(15) NOT NULL DEFAULT '',
   `constituency` varchar(15) NOT NULL DEFAULT '',
   `countingdate` date DEFAULT '0000-00-00',
-  `electiondate` date DEFAULT '0000-00-00',
+  `counting_date` date DEFAULT '0000-00-00',
+  `election_date` date DEFAULT '0000-00-00',
   PRIMARY KEY (`electionid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -21,9 +22,11 @@ CREATE TABLE `evs_tbl_election` (
 #
 
 CREATE TABLE `evs_tbl_eo` (
-  `electoralofficerid` int(11) NOT NULL DEFAULT '0',
-  `constituency` varchar(25) NOT NULL DEFAULT '',
-  PRIMARY KEY (`electoralofficerid`)
+  `electoralofficeid` int(11) NOT NULL DEFAULT '0',
+  `consituency` varchar(25) NOT NULL DEFAULT '',
+  `electoralofficer_id` int(11) NOT NULL DEFAULT '0',
+  `constituency` varchar(25) DEFAULT NULL,
+  PRIMARY KEY (`electoralofficeid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 #
@@ -52,7 +55,7 @@ CREATE TABLE `evs_tbl_result` (
   PRIMARY KEY (`serialno`),
   KEY `evs_tbl_result_fk` (`candidateid`),
   KEY `evs_tbl_result_fk_1` (`electionid`),
-  CONSTRAINT `evs_tbl_result_fk` FOREIGN KEY (`electionid`) REFERENCES `evs_tbl_eo` (`electoralofficerid`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `evs_tbl_result_fk` FOREIGN KEY (`electionid`) REFERENCES `evs_tbl_eo` (`electoralofficeid`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 #
@@ -64,7 +67,8 @@ CREATE TABLE `evs_tbl_user_credentials` (
   `password` varchar(20) NOT NULL DEFAULT '',
   `usertype` varchar(1) NOT NULL DEFAULT '',
   `loginstatus` int(1) unsigned DEFAULT NULL,
-  `sessionid` varchar(255) DEFAULT NULL,
+  `login_status` int(11) DEFAULT NULL,
+  `session_id` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -74,13 +78,15 @@ CREATE TABLE `evs_tbl_user_credentials` (
 
 CREATE TABLE `evs_tbl_application` (
   `userid` int(11) NOT NULL DEFAULT '0',
-  `constituency` varchar(20) NOT NULL DEFAULT '',
+  `consituency` varchar(20) NOT NULL DEFAULT '',
   `passedstatus` int(2) unsigned NOT NULL DEFAULT '0',
-  `approvedstatus` int(2) unsigned NOT NULL DEFAULT '0',
+  `aprrovedstatus` int(2) unsigned NOT NULL DEFAULT '0',
   `voterid` int(11) NOT NULL DEFAULT '0',
+  `user_id` int(11) NOT NULL DEFAULT '0',
+  `approvedstatus` int(11) DEFAULT NULL,
+  `constituency` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`userid`),
   CONSTRAINT `evs_tbl_application_fk` FOREIGN KEY (`userid`) REFERENCES `evs_tbl_user_credentials` (`userid`) ON DELETE CASCADE ON UPDATE CASCADE
-  
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 #
@@ -100,7 +106,10 @@ CREATE TABLE `evs_tbl_user_profile` (
   `pincode` varchar(10) NOT NULL DEFAULT '',
   `mobileno` varchar(10) NOT NULL DEFAULT '',
   `emailid` varchar(30) NOT NULL DEFAULT '',
-  `usertype` int(10) unsigned NOT NULL DEFAULT '0',
+  `type` int(10) unsigned NOT NULL DEFAULT '0',
+  `date_of_birth` date DEFAULT NULL,
+  `first_name` varchar(255) DEFAULT NULL,
+  `last_name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`userid`),
   CONSTRAINT `evs_tbl_user_profile_fk` FOREIGN KEY (`userid`) REFERENCES `evs_tbl_user_credentials` (`userid`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -125,8 +134,12 @@ CREATE TABLE `evs_tbl_voter` (
   `pincode` varchar(10) NOT NULL,
   `mobileno` varchar(10) NOT NULL,
   `emailid` varchar(30) NOT NULL,
+  `type` int(10) unsigned NOT NULL,
   PRIMARY KEY (`userid`),
   UNIQUE KEY `userid` (`userid`),
+  CONSTRAINT `evs_tbl_voter_fk_2` FOREIGN KEY (`userid`) REFERENCES `evs_tbl_application` (`userid`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `evs_tbl_voter_fk` FOREIGN KEY (`userid`) REFERENCES `evs_tbl_user_credentials` (`userid`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `evs_tbl_voter_fk_1` FOREIGN KEY (`userid`) REFERENCES `evs_tbl_user_profile` (`userid`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 #
@@ -154,12 +167,15 @@ CREATE TABLE `evs_tbl_candidate` (
   `electionid` int(11) NOT NULL DEFAULT '0',
   `partyid` int(11) NOT NULL DEFAULT '0',
   `district` varchar(20) NOT NULL DEFAULT '',
-  `constituency` varchar(20) NOT NULL DEFAULT '',
+  `contituency` varchar(20) NOT NULL DEFAULT '',
   `dateofbirth` date NOT NULL DEFAULT '0000-00-00',
   `mobileno` varchar(10) NOT NULL DEFAULT '',
   `address` varchar(50) NOT NULL DEFAULT '',
   `emailid` varchar(20) NOT NULL DEFAULT '',
-
+  `constituency` varchar(255) DEFAULT NULL,
+  `date_of__birth` date DEFAULT NULL,
+  `email_id` varchar(255) DEFAULT NULL,
+  `mobile_no` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`candidateid`),
   KEY `evs_tbl_candidate_fk` (`electionid`),
   KEY `evs_tbl_candidate_fk_1` (`partyid`),
