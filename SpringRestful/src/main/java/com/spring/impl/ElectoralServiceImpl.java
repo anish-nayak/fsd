@@ -3,16 +3,13 @@ package com.spring.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.spring.entity.ApplicationEntity;
 import com.spring.entity.UserCredentialsEntity;
 import com.spring.entity.UserEntity;
 import com.spring.json.Application;
-import com.spring.json.User;
 import com.spring.repository.ApplicationRepository;
-import com.spring.repository.ElectoralRepository;
 import com.spring.repository.UserCredentialsRepository;
 import com.spring.repository.UserRepository;
 import com.spring.service.ElectoralServices;
@@ -23,8 +20,6 @@ public class ElectoralServiceImpl implements ElectoralServices {
 	@Autowired
 	private ApplicationRepository applicationrepo;
 	
-	@Autowired
-	private ElectoralRepository electoral;
 	
 	@Autowired
 	private UserCredentialsRepository userCredentialsRepository;
@@ -63,6 +58,18 @@ public class ElectoralServiceImpl implements ElectoralServices {
 			}
 			return null;
 		}
+	@Override
+	public Object deleteByUserid(Long userid, String sessionId) {
+		UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findBySessionid(sessionId);
+		if (userCredentialsEntity != null) {
+			List<UserEntity> user = userRepository.findByUserid(userid);
+			UserEntity users = user.get(0);
+			userRepository.delete(users);
+			return "{Succesfully  deleted}";
+		} else {
+			return "{invalid sessionid}";
+		}
+	}
 
 	}
 	

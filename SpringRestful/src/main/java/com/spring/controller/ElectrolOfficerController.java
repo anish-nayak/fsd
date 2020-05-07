@@ -3,6 +3,7 @@ package com.spring.controller;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -45,6 +46,10 @@ public class ElectrolOfficerController {
 			){
        BeanUtils.copyProperties(application,applicationEntity);
 		return eoService.generateVoterId(application,userid,sessionId);
+	}
+	@DeleteMapping(value= "/application/approved/reject/{userid}")
+	public Object rejectRequest(@PathVariable(name= "userid")Long userid, @RequestHeader(name = "sessionId") String sessionId){
+		return eoService.deleteByUserid(userid, sessionId);
 	}
 
 	
