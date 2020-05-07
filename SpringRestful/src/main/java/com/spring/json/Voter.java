@@ -8,8 +8,7 @@ public class Voter {
 	private Long userid;
 	private String password;
 	private String usertype;
-	private int loginStatus;
-	private String sessionid;
+	
 
 	
 	private String firstName;
@@ -20,20 +19,22 @@ public class Voter {
 	private String location;
 	private String city;
 	private String state;
+	private String emailid;
+	private String mobileno;
+	private Long pincode;
+	
 	
 	
 	public Voter() {
 		super();
 	}
-	public Voter(Long userid, String password, String usertype, int loginStatus, String sessionId, String firstName,
-			String lastName, LocalDate dateOfBirth, String gender, String street, String location, String city,
-			String state) {
+	public Voter(String password, String usertype,String firstName, String lastName,
+			LocalDate dateOfBirth, String gender, String street, String location, String city, String state,
+			String emailid, String mobileno, Long pincode) {
 		super();
-		this.userid = userid;
 		this.password = password;
 		this.usertype = usertype;
-		this.loginStatus = loginStatus;
-		this.sessionid = sessionId;
+		
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.dateOfBirth = dateOfBirth;
@@ -42,6 +43,29 @@ public class Voter {
 		this.location = location;
 		this.city = city;
 		this.state = state;
+		this.emailid = emailid;
+		this.mobileno = mobileno;
+		this.pincode = pincode;
+	}
+	public Voter(Long userid, String password, String usertype, String firstName,
+			String lastName, LocalDate dateOfBirth, String gender, String street, String location, String city,
+			String state, String emailid, String mobileno, Long pincode) {
+		super();
+		this.userid = userid;
+		this.password = password;
+		this.usertype = usertype;
+	
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.dateOfBirth = dateOfBirth;
+		this.gender = gender;
+		this.street = street;
+		this.location = location;
+		this.city = city;
+		this.state = state;
+		this.emailid = emailid;
+		this.mobileno = mobileno;
+		this.pincode = pincode;
 	}
 	public Long getUserid() {
 		return userid;
@@ -61,18 +85,7 @@ public class Voter {
 	public void setUsertype(String usertype) {
 		this.usertype = usertype;
 	}
-	public int getLoginStatus() {
-		return loginStatus;
-	}
-	public void setLoginStatus(int loginStatus) {
-		this.loginStatus = loginStatus;
-	}
-	public String getSessionId() {
-		return sessionid;
-	}
-	public void setSessionId(String sessionId) {
-		this.sessionid = sessionId;
-	}
+
 	public String getFirstName() {
 		return firstName;
 	}
@@ -121,13 +134,33 @@ public class Voter {
 	public void setState(String state) {
 		this.state = state;
 	}
+	public String getEmailid() {
+		return emailid;
+	}
+	public void setEmailid(String emailid) {
+		this.emailid = emailid;
+	}
+	public String getMobileno() {
+		return mobileno;
+	}
+	public void setMobileno(String mobileno) {
+		this.mobileno = mobileno;
+	}
+	public Long getPincode() {
+		return pincode;
+	}
+	public void setPincode(Long pincode) {
+		this.pincode = pincode;
+	}
 	@Override
 	public String toString() {
-		return "Voter [userid=" + userid + ", password=" + password + ", usertype=" + usertype + ", loginStatus="
-				+ loginStatus + ", sessionId=" + sessionid + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", dateOfBirth=" + dateOfBirth + ", gender=" + gender + ", street=" + street + ", location="
-				+ location + ", city=" + city + ", state=" + state + "]";
+		return "Voter [userid=" + userid + ", password=" + password + ", usertype=" + usertype + ", firstName="
+				+ firstName + ", lastName=" + lastName + ", dateOfBirth=" + dateOfBirth + ", gender=" + gender
+				+ ", street=" + street + ", location=" + location + ", city=" + city + ", state=" + state + ", emailid="
+				+ emailid + ", mobileno=" + mobileno + ", pincode=" + pincode + "]";
 	}
+
+	
 	
 
 }
