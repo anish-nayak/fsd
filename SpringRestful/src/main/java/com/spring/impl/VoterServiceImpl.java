@@ -158,7 +158,7 @@ public Object statusVoter(String sessionid,Long userid) {
 	public Object getCandidateByElectionid(String sessionid, String electionid) {
 		UserCredentialsEntity usercred=userCredentialsRepository.findBySessionid(sessionid);
 		if(usercred!=null) {
-			List<CandidateEntity> candidateList=candidateRepository.findByElectionId(electionid);
+			List<CandidateEntity> candidateList=candidateRepository.findByElectionid(electionid);
 			return candidateList;	
 		}
 		return "Invalid session id";
